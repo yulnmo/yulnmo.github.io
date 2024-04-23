@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/App.css';
 
 function App() {
@@ -19,8 +19,51 @@ function App() {
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
   ];
 
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    play();
+  }, []);
+
+  function play() {
+    if (audioRef.current !== null) {
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          
+        });
+    }
+  }
+
+  function stop() {
+    if (audioRef.current !== null) {
+      try {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } catch (_) {
+
+      }
+    }
+  }
+
   return (
     <div className="main">
+      <div className="audio-controller">
+        <i className={isPlaying ? "fi fi-ss-music-slash" : "fi fi-ss-music-alt"} onClick={() => {
+          if (isPlaying) {
+            stop();
+          } else {
+            play();
+          }
+        }} />
+      </div>
+      <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
+        <source src="/music.mp3" type="audio/mpeg" />
+      </audio>
       <div className="intro">
         <img src="/R240311002_0616-2.jpg" className="image" />
       </div>
@@ -66,10 +109,10 @@ function App() {
         </div>
         <div className="maps">
           <div className="map">
-            <img src="/map.jpg" className="image"/>
+            <img src="/map.jpg" className="image" />
           </div>
           <p className="contents">
-            <a href="https://m.place.naver.com/place/32982104/home">네이버 지도로 이동</a>
+            <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
           </p>
         </div>
         <div className="information">

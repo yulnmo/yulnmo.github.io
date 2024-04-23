@@ -1,3 +1,5 @@
+@import "~@flaticon/flaticon-uicons/css/solid/all";
+
 html {
   font: 16px arial;
 }
@@ -91,4 +93,21 @@ html {
 
 .tail {
   color: #00000060;
+}
+
+audio {
+  display: none;
+  visibility: hidden;
+}
+
+.audio-controller {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+  font-size: 1.3rem;
+  color: #000000d0;
+  background: #ffffffa0;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  box-shadow: 0 0 5px #000000a0;
 }
