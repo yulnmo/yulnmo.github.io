@@ -63,6 +63,36 @@ html {
   margin: 0 0.3rem;
 }
 
+.photo {
+
+}
+
+.photo .photo-row {
+  display: flex;
+  width: 100%;
+}
+
+.photo .item {
+  flex: 1 1;
+  overflow: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  padding: 0.1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photo .item::-webkit-scrollbar {
+  display: none;
+}
+
+.photo .item img {
+  width: 100%;
+}
+
+
 .button {
   margin: 0 0 3rem 0;
 }

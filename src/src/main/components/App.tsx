@@ -5,7 +5,8 @@ function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
     "더 많이 소망하게 하고\n" +
     "가슴에 열정을, 마음에 평화를 주지\n" +
-    "네게서 그걸 얻었고.. 너에게 영원히 주고 싶어.";
+    "네게서 그걸 얻었고..\n" +
+    "너에게 영원히 주고 싶어.";
   const quoteReference = "영화 《노트북》 中";
 
   const invitationText = "소중하고 따뜻한 두 사람이 만나​\n" +
@@ -20,6 +21,11 @@ function App() {
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
   ];
 
+
+  const photos = [...new Array(30).keys()].map(it => it.toString().padStart(3, "0"));
+  const photoBaseUrl = "/photos";
+  const photoRows = 2;
+  const photoColumns = 2;
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -100,6 +106,20 @@ function App() {
         </div>
         <p className="category">PHOTO</p>
         <div className="photo">
+              {[...new Array(photoRows).keys()].map((row, index) => {
+                  return <div className="photo-row" key={index}>
+                    {
+                      [...new Array(photoColumns).keys()].map((col, index2) => {
+                        const photoIndex = row * photoColumns + col + 1;
+                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
+                        return <div className="item" key={index2}>
+                          <img src={photoUrl}/>
+                        </div>;
+                      })
+                    }
+                  </div>;
+                  
+              })}
           <input type="button" value="사진 더 둘러보기" />
         </div>
         <div className="schedule">
