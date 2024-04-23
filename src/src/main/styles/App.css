@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+html {
+  font: 16px arial;
 }
 
-.App-logo {
+.main {
+  text-align: center;
+  padding: 3rem;
+}
+
+.image-intro {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.category {
+  font-size: 1.5rem;
+  font-weight: 400;
+  background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
+  background: -o-linear-gradient(right, #B08E82, #E5CACC);
+  background: -moz-linear-gradient(right, #B08E82, #E5CACC);
+  background: linear-gradient(to right, #B08E82, #E5CACC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 3rem 0 3rem 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.quote {
+  margin: 0 0 3rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+.invitation {
+  margin: 0 0 3rem 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.maps {
+  margin: 0 0 3rem 0;
+}
+
+.information {
+  text-align: left;
+}
+
+.information .container {
+  margin: 0 0 3rem 0;
+}
+
+.information .container .subtitle {
+  font-size: 1.25rem;
+  background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
+  background: -o-linear-gradient(right, #B08E82, #E5CACC);
+  background: -moz-linear-gradient(right, #B08E82, #E5CACC);
+  background: linear-gradient(to right, #B08E82, #E5CACC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.information .container .item {
+  padding: 0 0 0 1rem;
+}
+.information .container .item .inner {
+  font-size: 0.875rem;
+  color: #00000060;
+}
+
+.appendix {
+  margin: 0 0 3rem 0;
+}
+
+.tail {
+  color: #00000060;
 }
