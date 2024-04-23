@@ -21,80 +21,84 @@ function App() {
 
   return (
     <div className="main">
-      <img src="/logo.png" className="image-intro" />
-      <p className="category">
-        INVITATION
-      </p>
-      <div className="quote">
-        {quoteText.split("\n").map(it => <p className="contents">{it}</p>)}
-        <p className="contents">{quoteReference}</p>
+      <div className="intro">
+        <img src="/R240311002_0616-2.jpg" className="image" />
       </div>
-      <div className="invitation">
-        {invitationText.split("\n").map(it => <p className="contents">{it}</p>)}
-        <p className="contents">{invitationReference}</p>
-      </div>
-
-      <div className="img">
-      </div>
-
-      <p className="contents">
-        <span>유승정 • 강미옥</span><small>의 아들 </small><span>석모</span>
-      </p>
-      <p className="contents">
-        <span>이동관 • 이경래</span><small>의 딸 </small><span>지율</span>
-      </p>
-      <p className="category">PHOTO</p>
-      <input type="button" value="사진 더 둘러보기" />
-      <p className="contents">
-        2024년 6월 22일 토요일 오전 11시 30분
-      </p>
-      <p className="contents">
-        라비두스
-      </p>
-      <p className="contents">
-        서울특별시 중구필동로 5길 7(필동3가 62-11번지)
-      </p>
-      <p className="contents">
-        T. 02-2265-7000
-      </p>
-
-      <div className="maps">
-        <div className="map"></div>
-        <p className="contents">
-          약도 클릭시 네이버 지도로 이동
+      <div className="context">
+        <p className="category">
+          INVITATION
         </p>
-      </div>
-      <div className="information">
-        {informations.map((it, index) => {
-          return <div className="container" key={index}>
-            <div>
-              <p className="subtitle">
-                {it[0]}
-              </p>
-            </div>
-            <div>
-              {(it[1] as string[]).map((row, index2) => {
-                const rows = row.split("\n");
-                return <p className="item" key={index2}>
-                  {rows[0]}
-                  {rows.length > 1 ? <>
-                    <br />
-                    {rows.slice(1).map(inner => <span className="inner">{inner}</span>)}
-                  </> : <></>}
-                </p>;
-              }
-              )}
-            </div>
-          </div>;
-        })}
-      </div>
-      <div className="appendix">
-        <input type="button" value="카톡으로 공유하기" />
-      </div>
-      <div className="tail">
+        <div className="quote">
+          {quoteText.split("\n").map(it => <p className="contents">{it}</p>)}
+          <p className="contents">{quoteReference}</p>
+        </div>
+        <div className="invitation">
+          {invitationText.split("\n").map(it => <p className="contents">{it}</p>)}
+          <p className="contents">{invitationReference}</p>
+        </div>
+
+        <div className="img">
+        </div>
+
         <p className="contents">
-          Seokmo & Jiyul
+          <span>유승정 • 강미옥</span><small>의 아들 </small><span>석모</span>
         </p>
+        <p className="contents">
+          <span>이동관 • 이경래</span><small>의 딸 </small><span>지율</span>
+        </p>
+        <p className="category">PHOTO</p>
+        <input type="button" value="사진 더 둘러보기" />
+        <p className="contents">
+          2024년 6월 22일 토요일 오전 11시 30분
+        </p>
+        <p className="contents">
+          라비두스
+        </p>
+        <p className="contents">
+          서울특별시 중구필동로 5길 7(필동3가 62-11번지)
+        </p>
+        <p className="contents">
+          T. 02-2265-7000
+        </p>
+
+        <div className="maps">
+          <div className="map"></div>
+          <p className="contents">
+            약도 클릭시 네이버 지도로 이동
+          </p>
+        </div>
+        <div className="information">
+          {informations.map((it, index) => {
+            return <div className="container" key={index}>
+              <div>
+                <p className="subtitle">
+                  {it[0]}
+                </p>
+              </div>
+              <div>
+                {(it[1] as string[]).map((row, index2) => {
+                  const rows = row.split("\n");
+                  return <p className="item" key={index2}>
+                    {rows[0]}
+                    {rows.length > 1 ? <>
+                      <br />
+                      {rows.slice(1).map(inner => <span className="inner">{inner}</span>)}
+                    </> : <></>}
+                  </p>;
+                }
+                )}
+              </div>
+            </div>;
+          })}
+        </div>
+        <div className="appendix">
+          <input type="button" value="카톡으로 공유하기" />
+        </div>
+        <div className="tail">
+          <p className="contents">
+            Seokmo & Jiyul
+          </p>
+        </div>
       </div>
     </div>
   );

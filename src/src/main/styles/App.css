@@ -2,7 +2,16 @@ html {
   font: 16px arial;
 }
 
-.main {
+.main .intro {
+  margin: 0;
+  padding: 0;
+}
+
+.main .intro .image {
+  width: 100%;
+}
+
+.main .context {
   text-align: center;
   padding: 3rem;
 }
