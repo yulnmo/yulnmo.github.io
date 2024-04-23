@@ -15,7 +15,7 @@ function App() {
   const invitationReference = "석모 • 지율 올림";
 
   const informations = [
-    ["지하철 이용 시", ["3, 4호선 충무로역", "도보: 1번 출구에서 약 10분", "셔틀버스: 1번 출구 앞 (3분 간격 운행)\n오전 10시 30분부터 오전 11시 30분까지 운행됩니다."]],
+    ["지하철 이용 시", ["3, 4호선 충무로역", "도보: 1번 출구에서 약 10분", "셔틀버스: 1번 출구 앞 (3분 간격 운행)\n오전 10시 30분부터 오전 11시 30분까지 운행"]],
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
   ];
 
@@ -47,24 +47,29 @@ function App() {
           <span>이동관 • 이경래</span><small>의 딸 </small><span>지율</span>
         </p>
         <p className="category">PHOTO</p>
-        <input type="button" value="사진 더 둘러보기" />
-        <p className="contents">
-          2024년 6월 22일 토요일 오전 11시 30분
-        </p>
-        <p className="contents">
-          라비두스
-        </p>
-        <p className="contents">
-          서울특별시 중구필동로 5길 7(필동3가 62-11번지)
-        </p>
-        <p className="contents">
-          T. 02-2265-7000
-        </p>
-
-        <div className="maps">
-          <div className="map"></div>
+        <div className="photo">
+          <input type="button" value="사진 더 둘러보기" />
+        </div>
+        <div className="schedule">
           <p className="contents">
-            약도 클릭시 네이버 지도로 이동
+            2024년 6월 22일 토요일 오전 11시 30분
+          </p>
+          <p className="contents">
+            라비두스
+          </p>
+          <p className="contents">
+            서울특별시 중구필동로 5길 7(필동3가 62-11번지)
+          </p>
+          <p className="contents">
+            T. 02-2265-7000
+          </p>
+        </div>
+        <div className="maps">
+          <div className="map">
+            <img src="/map.jpg" className="image"/>
+          </div>
+          <p className="contents">
+            <a href="https://m.place.naver.com/place/32982104/home">네이버 지도로 이동</a>
           </p>
         </div>
         <div className="information">

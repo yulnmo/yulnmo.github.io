@@ -42,8 +42,20 @@ html {
   margin: 0 0 3rem 0;
 }
 
+.button {
+  margin: 0 0 3rem 0;
+}
+
+.schedule {
+  margin: 0 0 3rem 0;
+}
+
 .maps {
   margin: 0 0 3rem 0;
+}
+
+.maps .image {
+  width: 100%;
 }
 
 .information {
@@ -70,6 +82,7 @@ html {
 .information .container .item .inner {
   font-size: 0.875rem;
   color: #00000060;
+  padding: 0.2rem 0 0 0;
 }
 
 .appendix {
