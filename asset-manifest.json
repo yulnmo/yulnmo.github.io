@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b8bc5410.css",
-    "main.js": "/static/js/main.9bc74323.js",
+    "main.css": "/static/css/main.44a3a25e.css",
+    "main.js": "/static/js/main.0439546f.js",
     "static/js/453.75c1d094.chunk.js": "/static/js/453.75c1d094.chunk.js",
     "static/media/uicons-solid-rounded-LOZ5Y5MG.eot": "/static/media/uicons-solid-rounded-LOZ5Y5MG.fe5c180c952cd82572a6.eot",
     "static/media/uicons-solid-straight-AUVBWMYN.eot": "/static/media/uicons-solid-straight-AUVBWMYN.9ee255cd533911d01bb0.eot",
@@ -10,12 +10,12 @@
     "static/media/uicons-solid-rounded-CYZ4X6CD.woff2": "/static/media/uicons-solid-rounded-CYZ4X6CD.eb1c7f505fab312dd3c2.woff2",
     "static/media/uicons-solid-straight-IILGUA3V.woff2": "/static/media/uicons-solid-straight-IILGUA3V.fc83483beee12322d53a.woff2",
     "index.html": "/index.html",
-    "main.b8bc5410.css.map": "/static/css/main.b8bc5410.css.map",
-    "main.9bc74323.js.map": "/static/js/main.9bc74323.js.map",
+    "main.44a3a25e.css.map": "/static/css/main.44a3a25e.css.map",
+    "main.0439546f.js.map": "/static/js/main.0439546f.js.map",
     "453.75c1d094.chunk.js.map": "/static/js/453.75c1d094.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8bc5410.css",
-    "static/js/main.9bc74323.js"
+    "static/css/main.44a3a25e.css",
+    "static/js/main.0439546f.js"
   ]
 }

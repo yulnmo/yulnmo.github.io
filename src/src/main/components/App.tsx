@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/App.css';
 
 function App() {
-  const quoteText = "인생은 누구나 비슷한 길을 걷어간다.\n" +
-    "나이가 들어 지난 날을 추억하는 것이다.\n" +
-    "그러니 결혼은 따뜻한 사람과 하거라.";
-  const quoteReference = "영화 《어바웃타임》 中";
+  const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
+    "더 많이 소망하게 하고\n" +
+    "가슴에 열정을, 마음에 평화를 주지\n" +
+    "네게서 그걸 얻었고.. 너에게 영원히 주고 싶어.";
+  const quoteReference = "영화 《노트북》 中";
 
   const invitationText = "소중하고 따뜻한 두 사람이 만나​\n" +
     "함께하는 일곱 번째 푸르른 여름날\n" +
@@ -34,7 +35,7 @@ function App() {
           setIsPlaying(true);
         })
         .catch(() => {
-          
+
         });
     }
   }
@@ -83,12 +84,20 @@ function App() {
         <div className="img">
         </div>
 
-        <p className="contents">
-          <span>유승정 • 강미옥</span><small>의 아들 </small><span>석모</span>
-        </p>
-        <p className="contents">
-          <span>이동관 • 이경래</span><small>의 딸 </small><span>지율</span>
-        </p>
+        <div className="parents">
+          <table>
+            <tbody>
+              <tr>
+                <td><span>유승정 • 강미옥</span><small>의 아들 </small></td>
+                <td><span>석모</span></td>
+              </tr>
+              <tr>
+                <td><span>이동관 • 이경래</span><small>의 딸 </small></td>
+                <td><span>지율</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <p className="category">PHOTO</p>
         <div className="photo">
           <input type="button" value="사진 더 둘러보기" />

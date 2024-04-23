@@ -38,10 +38,29 @@ html {
 
 .quote {
   margin: 0 0 3rem 0;
+  color: #00000090;
+  font-style: italic;
 }
 
 .invitation {
   margin: 0 0 3rem 0;
+}
+
+.parents {
+  display: flex;
+  justify-content: center;
+}
+
+.parents table {
+  text-align: left;
+}
+
+.parents table tr td {
+  padding: 0.4rem 0.6rem;
+}
+
+.parents small {
+  margin: 0 0.3rem;
 }
 
 .button {
