@@ -104,11 +104,11 @@ function App() {
             <tbody>
               <tr>
                 <td><span>유승정 • 강미옥</span><small>의 아들 </small></td>
-                <td><span>석모</span></td>
+                <td><span>석모 </span><span className="phone"><a href="tel:01063969094"><i className="fi fi-sr-phone-call"/></a></span></td>
               </tr>
               <tr>
                 <td><span>이동관 • 이경래</span><small>의 딸 </small></td>
-                <td><span>지율</span></td>
+                <td><span>지율 </span><span className="phone"><a href="tel:01048763918"><i className="fi fi-sr-phone-call"/></a></span></td>
               </tr>
             </tbody>
           </table>

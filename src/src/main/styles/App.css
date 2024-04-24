@@ -78,6 +78,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 0 6rem 0;
+  font-size: 1.2rem;
 }
 
 .parents table {
@@ -85,11 +86,11 @@ body {
 }
 
 .parents table tr td {
-  padding: 0.4rem 0.6rem;
+  padding: 0.4em 0.6em;
 }
 
 .parents small {
-  margin: 0 0.3rem;
+  margin: 0 0.3em;
 }
 
 .photo {
@@ -287,4 +288,17 @@ audio {
 
 a, a:visited {
   color: #B08E82e0;
+}
+
+.phone {
+  margin: 0 0 0 0.4rem;
+}
+
+.phone a {
+  color: #B08E82e0;
+  text-decoration: none;
+}
+
+.phone i {
+  font-size: 0.875em;
 }
