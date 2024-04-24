@@ -21,18 +21,16 @@ function App() {
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
   ];
 
-  const photos = [...new Array(30).keys()].map(it => it.toString().padStart(3, "0"));
+  const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const photoBaseUrl = "/photos";
   const photoRows = 2;
-  const photoColumns = 2;
+  const photoColumns = 15;
   const targetDate = new Date(2024, 6 - 1, 22);
   const days = (() => {
     const nextMonth = new Date(targetDate.getTime());
     nextMonth.setMonth(targetDate.getMonth() + 1);
     return Math.floor((nextMonth.getTime() - targetDate.getTime()) / 86400000);
   })();
-
-  console.log('days ' + days);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -141,13 +139,13 @@ function App() {
                       const date = new Date(targetDate.getTime() - (targetDate.getDate() - 1) * 86400000);
                       date.setDate(-date.getDay() + date.getDate() + index * 7 + index2);
                       if (date.getMonth() === targetDate.getMonth()) {
-                        return <div key={index} className={`item date${date.getDay() === 0 ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
+                        return <div key={index2} className={`item date${date.getDay() === 0 ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
                             <div className={date.getDate() === targetDate.getDate() ? 'target' : ''}>
                               {date.getDate()}
                             </div>
                           </div>;
                       } else {
-                        return <div key={index} className="item date"></div>;
+                        return <div key={index2} className="item date"></div>;
                       }
                   })}
                 </div>;
@@ -197,11 +195,12 @@ function App() {
           </p>
         </div>
         <div className="photo">
+          <div className="scrollable">
               {[...new Array(photoRows).keys()].map((row, index) => {
                   return <div className="photo-row" key={index}>
                     {
                       [...new Array(photoColumns).keys()].map((col, index2) => {
-                        const photoIndex = row * photoColumns + col + 1;
+                        const photoIndex = row * photoColumns + col;
                         const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
                         return <div className="item" key={index2}>
                           <img src={photoUrl}/>
@@ -210,6 +209,7 @@ function App() {
                     }
                   </div>; 
               })}
+              </div>
         </div>
         <div className="information">
           {informations.map((it, index) => {

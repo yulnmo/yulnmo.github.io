@@ -162,13 +162,33 @@ body {
   font-style: normal;  
 }
 
+.gallery .category {
+  margin: 3rem 0 1.5rem 0;
+}
+
 .photo {
-  margin: 0 0 3rem 0;
+  position: relative;
+  margin: 0 -3rem 3rem -3rem;
+  overflow: hidden;
+  height: 26rem;
+}
+
+.photo .scrollable {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: scroll;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .photo .photo-row {
   display: flex;
-  width: 100%;
+  width: 120rem;
 }
 
 .photo .item {
@@ -270,11 +290,11 @@ body {
 }
 
 .calendar .row .item.left-days .heart {
-  color: #C17070e0;
+  color: #C16767e0;
 }
 
 .calendar .row .item .highlight {
-  color: #C17070e0;
+  color: #C16767e0;
   font-weight: 600;
   
 }
