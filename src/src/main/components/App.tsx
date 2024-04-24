@@ -80,6 +80,13 @@ function App() {
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
       <div className="intro">
+        <div className="overlay" />
+        <div className="border" />
+        <div className="abstract">
+          <div className="who">석모 | 지율</div>
+          <div className="when">24 . 06 . 22 • 토요일 • 11 : 30 am</div>
+          <div className="where">라비두스</div>
+        </div>
         <img src="/intro.jpg" className="image" />
       </div>
       <div className="context">

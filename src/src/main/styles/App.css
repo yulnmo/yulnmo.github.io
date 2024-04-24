@@ -23,12 +23,66 @@ body {
 }
 
 .main .intro {
+  position: relative;
   margin: 0;
   padding: 0;
+  height: 520px;
+  overflow: hidden;
 }
 
 .main .intro .image {
   width: 100%;
+}
+
+.main .overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, white, 30%, transparent, 40%, transparent);
+}
+
+.main .border {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  top: 1rem;
+  bottom: 0rem;
+  border: 3px solid #B08E8260;
+}
+
+.main .abstract {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.main .abstract div {
+  display: flex;
+  justify-content: center;
+}
+
+.main .abstract .who {
+  color: #B08E82e0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.main .abstract .when, .main .abstract .where {
+  color: #00000080;
+  font-size: 1rem;
+}
+
+.main .abstract .where {
+  margin: 0 0 2rem 0;
 }
 
 .main .context {
@@ -78,7 +132,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 0 6rem 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .parents table {
@@ -258,7 +312,7 @@ body {
   font-size: 0.875rem;
   color: #00000080;
   line-height: 2rem;
-  padding: 0 0 0 4rem;
+  padding: 0;
 }
 
 .appendix {
