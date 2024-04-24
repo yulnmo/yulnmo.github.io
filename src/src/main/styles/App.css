@@ -1,7 +1,7 @@
 @import "~@flaticon/flaticon-uicons/css/solid/all";
 
 html {
-  font: 16px arial;
+  font: 14px arial;
   background: #5D555680;
 }
 
@@ -40,7 +40,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: linear-gradient(0deg, white, 30%, transparent, 40%, transparent);
+
 }
 
 .main .border {
@@ -48,8 +48,8 @@ body {
   left: 1rem;
   right: 1rem;
   top: 1rem;
-  bottom: 0rem;
-  border: 3px solid #B08E8260;
+  bottom: 1rem;
+
 }
 
 .main .abstract {
@@ -70,15 +70,19 @@ body {
 }
 
 .main .abstract .who {
-  color: #B08E82e0;
-  font-size: 1.5rem;
+  color: #6d6d6dd0;
+  font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
+
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;  
 }
 
 .main .abstract .when, .main .abstract .where {
   color: #00000080;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .main .abstract .where {
@@ -109,13 +113,18 @@ body {
 }
 
 .quote {
-  margin: 0 0 3rem 0;
+  display: none;
+  margin: 6rem 0 3rem 0;
   color: #00000090;
   font-style: italic;
 }
 
 .invitation {
   margin: 0 0 6rem 0;
+}
+
+.invitation .reference {
+  margin: 3rem 0 0rem 0;
 }
 
 .bridge-image {
@@ -132,7 +141,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 0 6rem 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .parents table {
@@ -145,6 +154,12 @@ body {
 
 .parents small {
   margin: 0 0.3em;
+}
+
+.gallery {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;  
 }
 
 .photo {
@@ -254,8 +269,12 @@ body {
   justify-content: center;
 }
 
+.calendar .row .item.left-days .heart {
+  color: #C17070e0;
+}
+
 .calendar .row .item .highlight {
-  color: #B08E82e0;
+  color: #C17070e0;
   font-weight: 600;
   
 }
@@ -272,7 +291,16 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  margin: 2rem 0 2rem 0;
+  margin: 2rem 0 0.3rem 0;
+}
+
+.calendar .row .item.subtitle {
+  text-align: center;
+
+  font-size: 1rem;
+  color: #B08E82e0;
+
+  margin: 0rem 0 2rem 0;
 }
 
 .schedule {
@@ -296,7 +324,7 @@ body {
 }
 
 .information .container .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
   background: -moz-linear-gradient(right, #B08E82, #E5CACC);
@@ -306,6 +334,7 @@ body {
 }
 
 .information .container .item {
+  font-size: 1rem;
   padding: 0 0 0 1rem;
 }
 .information .container .item .inner {

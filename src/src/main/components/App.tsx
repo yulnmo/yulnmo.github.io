@@ -11,7 +11,7 @@ function App() {
 
   const invitationText = "소중하고 따뜻한 두 사람이 만나​\n" +
     "함께하는 일곱 번째 푸르른 여름날\n" +
-    "연인에서 부부로 새로운 시작을 합니다.\n\n" +
+    "연인에서 부부로 새로운 시작을 합니다.\n \n" +
     "귀한 발걸음 하시어 축복해 주시면\n" +
     "더 없는 격려와 기쁨으로 간직하겠습니다.";
   const invitationReference = "석모 • 지율 올림";
@@ -83,23 +83,23 @@ function App() {
         <div className="overlay" />
         <div className="border" />
         <div className="abstract">
-          <div className="who">석모 | 지율</div>
+          <div className="who">Seokmo and Jiyul</div>
           <div className="when">24 . 06 . 22 • 토요일 • 11 : 30 am</div>
-          <div className="where">라비두스</div>
+          <div className="where">충무로 라비두스</div>
         </div>
-        <img src="/intro.jpg" className="image" />
+        <img src="/photos/010.jpeg" className="image" />
       </div>
       <div className="context">
         <p className="category">
-          모시는 글
+          
         </p>
         <div className="quote">
           {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
           <p className="contents">{quoteReference}</p>
         </div>
         <div className="invitation">
-          {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
-          <p className="contents">{invitationReference}</p>
+          {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it.trim() === '' ? <span>&nbsp;</span> : it}</p>)}
+          <p className="contents reference">{invitationReference}</p>
         </div>
 
         <div className="bridge-image">
@@ -120,30 +120,15 @@ function App() {
             </tbody>
           </table>
         </div>
-        <p className="category">
-          행복한 우리의 순간들
-        </p>
-        <div className="photo">
-              {[...new Array(photoRows).keys()].map((row, index) => {
-                  return <div className="photo-row" key={index}>
-                    {
-                      [...new Array(photoColumns).keys()].map((col, index2) => {
-                        const photoIndex = row * photoColumns + col + 1;
-                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
-                        return <div className="item" key={index2}>
-                          <img src={photoUrl}/>
-                        </div>;
-                      })
-                    }
-                  </div>;
-                  
-              })}
-          <input type="button" value="사진 더 둘러보기" />
-        </div>
         <div className="calendar">
             <div className="row">
               <div className="item title">
-                6월
+                2024. 06. 22
+              </div>
+            </div>
+            <div className="row">
+              <div className="item subtitle">
+                토요일 오전 11시 30분
               </div>
             </div>
             <div className="row">
@@ -171,7 +156,7 @@ function App() {
             <div className="row">
               <div className="item left-days">
                 <div>
-                  <span>석모 지율님의 결혼식 </span>
+                  <span>석모 </span><span className="heart">♥︎</span><span> 지율의 결혼식이 </span>
                   <span className="highlight">{(() => {
                     const now = new Date();
                     now.setHours(0);
@@ -182,27 +167,10 @@ function App() {
                     const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
                     return diff;
                   })()}일</span>
-                  <span> 전</span>
+                  <span> 남았습니다.</span>
                 </div>
               </div>
             </div>
-        </div>
-        <div className="schedule">
-          <p className="contents">
-            2024년 6월 22일 토요일 오전 11시 30분
-          </p>
-          <p className="contents">
-            라비두스
-          </p>
-          <p className="contents">
-            서울특별시 중구필동로 5길 7
-          </p>
-          <p className="contents">
-            (필동3가 62-11번지)
-          </p>
-          <p className="contents">
-            T. <a href="tel:0222657000">02-2265-7000</a>
-          </p>
         </div>
         <div className="maps">
           <div className="map">
@@ -211,6 +179,37 @@ function App() {
           <p className="contents">
             <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
           </p>
+        </div>
+        <div className="schedule">
+          <p className="contents">
+            라비두스
+          </p>
+          <p className="contents">
+            서울특별시 중구필동로 5길 7
+          </p>
+          <p className="contents">
+            T. <a href="tel:0222657000">02-2265-7000</a>
+          </p>
+        </div>
+        <div className="gallery">
+          <p className="category">
+            Gallery
+          </p>
+        </div>
+        <div className="photo">
+              {[...new Array(photoRows).keys()].map((row, index) => {
+                  return <div className="photo-row" key={index}>
+                    {
+                      [...new Array(photoColumns).keys()].map((col, index2) => {
+                        const photoIndex = row * photoColumns + col + 1;
+                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
+                        return <div className="item" key={index2}>
+                          <img src={photoUrl}/>
+                        </div>;
+                      })
+                    }
+                  </div>; 
+              })}
         </div>
         <div className="information">
           {informations.map((it, index) => {
