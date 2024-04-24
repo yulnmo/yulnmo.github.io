@@ -100,7 +100,7 @@ body {
 }
 
 .category {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
@@ -163,14 +163,14 @@ body {
 }
 
 .gallery .category {
-  margin: 3rem 0 1.5rem 0;
+  margin: 3rem 0 2rem 0;
 }
 
 .photo {
   position: relative;
-  margin: 0 -3rem 3rem -3rem;
+  margin: 0 -3rem 6rem -3rem;
   overflow: hidden;
-  height: 26rem;
+  height: 37rem;
 }
 
 .photo .scrollable {
@@ -184,11 +184,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.photo .scrollable::-webkit-scrollbar {
+  display: none;
 }
 
 .photo .photo-row {
   display: flex;
-  width: 120rem;
+  width: 180rem;
 }
 
 .photo .item {
@@ -196,7 +203,7 @@ body {
   overflow: hidden;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  padding: 0.1rem;
+  padding: 0.2rem;
 
   display: flex;
   flex-direction: column;
@@ -221,7 +228,7 @@ body {
   flex-direction: column;
   width: 100%;
 
-  margin: 0 0 3rem 0;
+  margin: 0 0 6rem 0;
 }
 
 .calendar .row {
@@ -355,7 +362,7 @@ body {
 
 .information .container .item {
   font-size: 1rem;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 0rem;
 }
 .information .container .item .inner {
   font-size: 0.875rem;
@@ -385,7 +392,7 @@ audio {
   color: #ffffffff;
   background: #B08E82e0;
   border-radius: 50%;
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem 0.65rem;
   box-shadow: 0 0 5px #000000a0;
   z-index: 10;
 }

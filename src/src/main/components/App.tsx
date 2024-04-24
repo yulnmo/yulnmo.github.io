@@ -170,25 +170,6 @@ function App() {
               </div>
             </div>
         </div>
-        <div className="maps">
-          <div className="map">
-            <img src="/map.jpg" className="image" />
-          </div>
-          <p className="contents">
-            <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
-          </p>
-        </div>
-        <div className="schedule">
-          <p className="contents">
-            라비두스
-          </p>
-          <p className="contents">
-            서울특별시 중구필동로 5길 7
-          </p>
-          <p className="contents">
-            T. <a href="tel:0222657000">02-2265-7000</a>
-          </p>
-        </div>
         <div className="gallery">
           <p className="category">
             Gallery
@@ -210,6 +191,30 @@ function App() {
                   </div>; 
               })}
               </div>
+        </div>
+        <div className="gallery">
+          <p className="category">
+            Location
+          </p>
+        </div>
+        <div className="maps">
+          <div className="map">
+            <img src="/map.jpg" className="image" />
+          </div>
+          <p className="contents">
+            <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
+          </p>
+        </div>
+        <div className="schedule">
+          <p className="contents">
+            라비두스
+          </p>
+          <p className="contents">
+            서울특별시 중구필동로 5길 7
+          </p>
+          <p className="contents">
+            T. <a href="tel:0222657000">02-2265-7000</a>
+          </p>
         </div>
         <div className="information">
           {informations.map((it, index) => {
