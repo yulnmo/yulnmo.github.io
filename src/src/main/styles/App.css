@@ -5,6 +5,12 @@ html {
   background: #5D555680;
 }
 
+body {
+  font-family: "Gowun Batang", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 #root {
   display: flex;
   justify-content: center;
@@ -27,7 +33,7 @@ html {
 
 .main .context {
   text-align: center;
-  padding: 3rem;
+  padding: 0 3rem 3rem 3rem;
 }
 
 .image-intro {
@@ -37,7 +43,7 @@ html {
 
 .category {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
   background: -moz-linear-gradient(right, #B08E82, #E5CACC);
@@ -55,12 +61,23 @@ html {
 }
 
 .invitation {
-  margin: 0 0 3rem 0;
+  margin: 0 0 6rem 0;
+}
+
+.bridge-image {
+  width: 100%;
+  overflow: hidden;
+  margin: 3rem 0 3rem 0;
+}
+
+.bridge-image img {
+  width: 100%;
 }
 
 .parents {
   display: flex;
   justify-content: center;
+  margin: 0 0 6rem 0;
 }
 
 .parents table {
@@ -175,11 +192,24 @@ html {
   justify-content: center;
 }
 
+.calendar .row .item.left-days {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calendar .row .item .highlight {
+  color: #B08E82e0;
+  font-weight: 600;
+  
+}
+
 .calendar .row .item.title {
   text-align: center;
 
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
   background: -moz-linear-gradient(right, #B08E82, #E5CACC);
@@ -191,7 +221,7 @@ html {
 }
 
 .schedule {
-  margin: 0 0 3rem 0;
+  margin: 0 0 6rem 0;
 }
 
 .maps {
@@ -253,4 +283,8 @@ audio {
   border-radius: 50%;
   padding: 0.5rem 0.6rem;
   box-shadow: 0 0 5px #000000a0;
+}
+
+a, a:visited {
+  color: #B08E82e0;
 }

@@ -4,8 +4,8 @@ import '../styles/App.css';
 function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
     "더 많이 소망하게 하고\n" +
-    "가슴에 열정을, 마음에 평화를 주지\n" +
-    "네게서 그걸 얻었고..\n" +
+    "가슴에 열정을, 마음에 평화를 주지.\n" +
+    "네게서 그걸 얻었고\n" +
     "너에게 영원히 주고 싶어.";
   const quoteReference = "영화 《노트북》 中";
 
@@ -29,7 +29,7 @@ function App() {
   const days = (() => {
     const nextMonth = new Date(targetDate.getTime());
     nextMonth.setMonth(targetDate.getMonth() + 1);
-    return (nextMonth.getTime() - targetDate.getTime()) / 86400000;
+    return Math.floor((nextMonth.getTime() - targetDate.getTime()) / 86400000);
   })();
 
   console.log('days ' + days);
@@ -80,11 +80,11 @@ function App() {
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
       <div className="intro">
-        <img src="/R240311002_0616-2.jpg" className="image" />
+        <img src="/intro.jpg" className="image" />
       </div>
       <div className="context">
         <p className="category">
-          INVITATION
+          모시는 글
         </p>
         <div className="quote">
           {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
@@ -95,7 +95,8 @@ function App() {
           <p className="contents">{invitationReference}</p>
         </div>
 
-        <div className="img">
+        <div className="bridge-image">
+          <img src="/photos/020.jpeg"/>
         </div>
 
         <div className="parents">
@@ -112,7 +113,9 @@ function App() {
             </tbody>
           </table>
         </div>
-        <p className="category">PHOTO</p>
+        <p className="category">
+          행복한 우리의 순간들
+        </p>
         <div className="photo">
               {[...new Array(photoRows).keys()].map((row, index) => {
                   return <div className="photo-row" key={index}>
@@ -158,6 +161,24 @@ function App() {
                 </div>;
               })
             }
+            <div className="row">
+              <div className="item left-days">
+                <div>
+                  <span>석모 지율님의 결혼식 </span>
+                  <span className="highlight">{(() => {
+                    const now = new Date();
+                    now.setHours(0);
+                    now.setMinutes(0);
+                    now.setSeconds(0);
+                    now.setMilliseconds(0);
+                    
+                    const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
+                    return diff;
+                  })()}일</span>
+                  <span> 전</span>
+                </div>
+              </div>
+            </div>
         </div>
         <div className="schedule">
           <p className="contents">
@@ -173,7 +194,7 @@ function App() {
             (필동3가 62-11번지)
           </p>
           <p className="contents">
-            T. 02-2265-7000
+            T. <a href="tel:0222657000">02-2265-7000</a>
           </p>
         </div>
         <div className="maps">
