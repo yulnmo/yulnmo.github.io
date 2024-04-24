@@ -76,7 +76,7 @@ html {
 }
 
 .photo {
-
+  margin: 0 0 3rem 0;
 }
 
 .photo .photo-row {
@@ -107,6 +107,87 @@ html {
 
 .button {
   margin: 0 0 3rem 0;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  margin: 0 0 3rem 0;
+}
+
+.calendar .row {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.calendar .row .item {
+  flex: 1 1;
+  font-size: 0.875rem;
+}
+
+.calendar .row .item.weekdays {
+  color: #000000a0;
+  height: 2rem;
+}
+
+.calendar .row .item.weekdays.sun {
+  color: #B08E82e0;
+}
+
+.calendar .row .item.weekdays.sat {
+  color: #B08E82e0;
+}
+
+.calendar .row .item.date {
+  color: #000000a0;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar .row .item.date div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calendar .row .item.date.sun {
+  color: #B08E82e0;
+}
+
+.calendar .row .item.date.sat {
+  color: #B08E82e0;
+}
+
+.calendar .row .item.date .target {
+  color: #ffffffff;
+  background: #B08E82e0;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-weight: 600;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calendar .row .item.title {
+  text-align: center;
+
+  font-size: 1.25rem;
+  font-weight: 400;
+  background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
+  background: -o-linear-gradient(right, #B08E82, #E5CACC);
+  background: -moz-linear-gradient(right, #B08E82, #E5CACC);
+  background: linear-gradient(to right, #B08E82, #E5CACC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 2rem 0 2rem 0;
 }
 
 .schedule {
@@ -144,8 +225,9 @@ html {
 }
 .information .container .item .inner {
   font-size: 0.875rem;
-  color: #00000060;
-  padding: 0.2rem 0 0 0;
+  color: #00000080;
+  line-height: 2rem;
+  padding: 0 0 0 4rem;
 }
 
 .appendix {
