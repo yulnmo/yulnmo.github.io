@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && ./copy.sh",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build && ./copy.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

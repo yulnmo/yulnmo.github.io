@@ -2,6 +2,18 @@
 
 html {
   font: 16px arial;
+  background: #5D555680;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  max-width: 480px;
+  position: relative;
+  background: white;
 }
 
 .main .intro {
@@ -153,10 +165,10 @@ audio {
   position: absolute;
   left: 1.5rem;
   top: 1.5rem;
-  font-size: 1.3rem;
-  color: #000000d0;
-  background: #ffffffa0;
-  border-radius: 0.5rem;
-  padding: 0.4rem 0.5rem;
+  font-size: 0.875rem;
+  color: #ffffffff;
+  background: #B08E82e0;
+  border-radius: 50%;
+  padding: 0.5rem 0.6rem;
   box-shadow: 0 0 5px #000000a0;
 }

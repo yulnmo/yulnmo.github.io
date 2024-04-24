@@ -60,7 +60,7 @@ function App() {
   return (
     <div className="main">
       <div className="audio-controller">
-        <i className={isPlaying ? "fi fi-ss-music-slash" : "fi fi-ss-music-alt"} onClick={() => {
+        <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} onClick={() => {
           if (isPlaying) {
             stop();
           } else {
@@ -79,11 +79,11 @@ function App() {
           INVITATION
         </p>
         <div className="quote">
-          {quoteText.split("\n").map(it => <p className="contents">{it}</p>)}
+          {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
           <p className="contents">{quoteReference}</p>
         </div>
         <div className="invitation">
-          {invitationText.split("\n").map(it => <p className="contents">{it}</p>)}
+          {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
           <p className="contents">{invitationReference}</p>
         </div>
 
@@ -159,7 +159,7 @@ function App() {
                     {rows[0]}
                     {rows.length > 1 ? <>
                       <br />
-                      {rows.slice(1).map(inner => <span className="inner">{inner}</span>)}
+                      {rows.slice(1).map((inner, index3) => <span key={index3} className="inner">{inner}</span>)}
                     </> : <></>}
                   </p>;
                 }
