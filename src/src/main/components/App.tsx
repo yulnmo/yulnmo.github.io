@@ -101,7 +101,7 @@ function App() {
         </div>
 
         <div className="bridge-image">
-          <img src="/photos/020.jpeg"/>
+          <img src="/photos/009.jpeg"/>
         </div>
 
         <div className="parents">
