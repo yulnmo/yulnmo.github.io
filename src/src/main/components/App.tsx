@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/App.css';
 
+declare const naver: any;
+
 function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
     "더 많이 소망하게 하고\n" +
@@ -38,6 +40,7 @@ function App() {
 
   useEffect(() => {
     play();
+    map();
   }, []);
 
   function play() {
@@ -70,6 +73,26 @@ function App() {
       } else {
         play();
       }
+  }
+  
+  function map() {
+    const center = new naver.maps.LatLng(37.5566195, 126.9963008);
+    const mapOptions = {
+      center,
+      zoom: 14,
+      zoomControl: true,
+      zoomControlOptions: {
+          style: naver.maps.ZoomControlStyle.SMALL,
+          position: naver.maps.Position.TOP_RIGHT
+      }
+    };
+    
+    const map = new naver.maps.Map('map', mapOptions);
+
+    const marker = new naver.maps.Marker({
+      position: center,
+      map: map
+    });
   }
 
   return (
@@ -216,8 +239,8 @@ function App() {
           </p>
         </div>
         <div className="maps">
-          <div className="map">
-            <img src={`${assetsBaseUrl}/map.jpg`} className="image" />
+          <div id="map" className="map">
+            
           </div>
           <p className="contents">
             <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
@@ -231,7 +254,7 @@ function App() {
             서울특별시 중구필동로 5길 7
           </p>
           <p className="contents">
-            T. <a href="tel:0222657000">02-2265-7000</a>
+            <a href="tel:0222657000">02-2265-7000</a>
           </p>
         </div>
         <div className="information">

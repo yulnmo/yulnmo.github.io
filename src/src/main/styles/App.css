@@ -379,8 +379,9 @@ body {
   margin: 0 0 3rem 0;
 }
 
-.maps .image {
+.maps .map {
   width: 100%;
+  aspect-ratio: calc(4/3);
 }
 
 .information {
