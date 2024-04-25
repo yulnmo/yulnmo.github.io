@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, MouseEvent } from 'react';
 import '../styles/App.css';
 
 declare const naver: any;
@@ -98,6 +98,22 @@ function App() {
 
   function handleToggleMap() {
     setIsMapApi(!isMapApi);
+  }
+
+  function handleClickLink(e: MouseEvent<HTMLDivElement>) {
+    switch (e.currentTarget.getAttribute('data-name')) {
+      case 'navermap':
+        window.open('https://naver.me/5PS2ZlQL');
+        break;
+      case 'kakaonavi':
+        window.open('https://kko.to/u3xEZWI-dj');
+        break;
+      case 'tmap':
+        window.open('https://poi.tmap.co.kr/sharing/positionSharing.do?contents=dHlwZT0yJnBrZXk9NTM4OTExMTAxJnBvaUlkPTUzODkxMTEmbmF2U2VxPTEmcG9pTmFtZT3rnbzruYTrkZDsiqQg7KO87LCo7J6lJmNlbnRlclg9NDU3MTkyMyZjZW50ZXJZPTEzNTE5MzYmdGltZT0yMDI064WEIDTsm5QgMjbsnbwgMjoxJnRlbD0wMi0yMjY1LTcwMDAmYWRkcj3shJzsmrgg7KSR6rWsIO2VhOuPmTPqsIAgNjItMTU=&tailParam=%7B%22reqMode%22:%221100%22,%22reqType%22:%221100%22,%22extra%22:%22112%22%7D');
+        break;
+      default:
+        break;
+    }
   }
 
   return (
@@ -263,9 +279,22 @@ function App() {
           <div className="map-simple" style={isMapApi ? {'display': 'none'} : {}} >
             <img src={`${assetsBaseUrl}/map.jpg`} />
           </div>
-          <p className="contents">
-            <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
-          </p>
+          <div className="links">
+            <div className="link" style={{'flex': '3 0'}} data-name="navermap" onClick={handleClickLink}>
+              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/navermap.png`}/></div></div>
+              <div className="vendor">네이버 지도</div>
+            </div>
+            <div className="divider"><div className="stroke"></div></div>
+            <div className="link" style={{'flex': '3 0'}} data-name="kakaonavi" onClick={handleClickLink}>
+              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/kakaonavi.png`}/></div></div>
+              <div className="vendor">카카오 지도</div>
+            </div>
+            <div className="divider"><div className="stroke"></div></div>
+            <div className="link" style={{'flex': '2 0'}}  data-name="tmap" onClick={handleClickLink}>
+              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/tmap.png`}/></div></div>
+              <div className="vendor">티맵</div>
+            </div>
+          </div>
         </div>
         <div className="information">
           {informations.map((it, index) => {

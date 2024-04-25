@@ -411,6 +411,62 @@ body {
   margin: 0 0 1rem 0;
 }
 
+.maps .links {
+  display: flex;
+  width: 100%;
+  background: white;
+  border: 1px solid #00000010;
+  border-radius: 0.3rem;
+}
+
+.maps .links .link {
+  display: flex;
+  flex: 1 1;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.maps .links .link .image {
+  margin: 0 0.5rem 0 0;
+  height: 100%;
+  width: 1.5rem;
+  position: relative;
+  flex: 1 1;
+}
+
+.maps .links .link .image .inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.maps .links .link .image .inner img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.maps .links .link .vendor {
+  flex: 6 1;
+}
+
+.maps .links .divider {
+  flex: 0 1;
+  width: 1px;
+  padding: 0.7rem 0;
+}
+
+.maps .links .divider .stroke {
+  width: 1px;
+  background: #00000010;
+  height: 100%;
+}
+
 input[type="button"] {
   background: white;
   outline: none;
