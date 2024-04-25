@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, MouseEvent } from 'react';
 import '../styles/App.css';
 
 declare const naver: any;
+declare const Kakao: any;
 
 function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
@@ -42,6 +43,7 @@ function App() {
   useEffect(() => {
     play();
     map();
+    kakao();
   }, []);
 
   function play() {
@@ -114,6 +116,39 @@ function App() {
       default:
         break;
     }
+  }
+
+  function kakao() {
+    try {
+      Kakao.init('edf76d62fb95d5bb6baf9948f36e06e2');
+    } catch (_: any) {
+
+    }
+  }
+
+  function handleShareToKakao(e: MouseEvent<HTMLDivElement>) {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '석모, 지율의 모바일 청첩장',
+        description: '2024년 6월 22일 오전 11시 30분 라비두스: 석모, 지율의 결혼을 축하해주세요 👰🏻‍♀️💍🤵🏻',
+        imageUrl:
+          'https://yulnmo.github.io/assets/photos/009.jpeg',
+        link: {
+          mobileWebUrl: 'https://yulnmo.github.io',
+          webUrl: 'https://yulnmo.github.io',
+        },
+      },
+      buttons: [
+        {
+          title: '석모, 지율의 모바일 청첩장',
+          link: {
+            mobileWebUrl: 'https://yulnmo.github.io',
+            webUrl: 'https://yulnmo.github.io',
+          },
+        }
+      ]
+    });
   }
 
   return (
@@ -321,7 +356,7 @@ function App() {
           })}
         </div>
         <div className="appendix">
-          <input type="button" value="카톡으로 공유하기" />
+          <input type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
         </div>
         <div className="tail">
           <p className="contents">
