@@ -83,17 +83,26 @@ function App() {
         </audio>
       </div>
 
+      <div className="header">
+        <div className="abstract">
+          <div className="mark">WEDDING INVITATION</div>
+          <div className="who">유석모 <div className="line">&nbsp;</div> 이지율</div>
+        </div>
+      </div>
+
       <div className="intro">
         <div className="overlay" />
         <div className="border" />
-        <div className="abstract">
-          <div className="who">Seokmo and Jiyul</div>
-          <div className="when">24 . 06 . 22 • 토요일 • 11 : 30 am</div>
-          <div className="where">충무로 라비두스</div>
-        </div>
         <img src={`${photoBaseUrl}/010.jpeg`} className="image" />
       </div>
+
       <div className="context">
+        <div className="abstract">
+          <div className="who">Seokmo and Jiyul</div>
+          <div className="when">2024년 6월 22일 토요일 오전 11시 30분</div>
+          <div className="where">충무로 라비두스</div>
+        </div>
+
         <p className="category">
           Invitation
         </p>

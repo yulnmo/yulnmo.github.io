@@ -1,5 +1,10 @@
 @import "~@flaticon/flaticon-uicons/css/solid/all";
 
+@font-face {
+  font-family: "Francisco";
+  src: url("/assets/fonts/Francisco.woff");
+}
+
 html {
   font: 14px arial;
   background: #5D555640;
@@ -32,7 +37,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  height: 540px;
+  height: 530px;
   overflow: hidden;
 }
 
@@ -47,6 +52,7 @@ body {
   top: 0;
   bottom: 0;
 
+  /* background: linear-gradient(0deg, white 0%, #ffffff80 5%, transparent 10%); */
 }
 
 .main .border {
@@ -58,16 +64,36 @@ body {
 
 }
 
-.main .abstract {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+.main .context .abstract {
+  margin: 3rem 0 6rem 0;
+}
+
+.main .header .abstract {
 
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: start;
+
+  margin: 3rem 0 2rem 0;
+}
+
+.main .header .abstract .mark {
+  font-size: 0.4rem;
+  letter-spacing: 0.2rem;
+  color: #000000a0;
+  margin: 0 0 0.5rem 0;
+}
+
+.main .header .abstract .who {
+  font-size: 1rem;
+  color: #000000a0;
+}
+
+.main .header .abstract .who .line {
+  margin: 0.35rem 1.2rem;
+  width: 1px;
+  height: 0.65rem;
+  border-right: 0.01rem solid #00000070;
 }
 
 .main .abstract div {
@@ -75,23 +101,23 @@ body {
   justify-content: center;
 }
 
-.main .abstract .who {
+.main .context .abstract .who {
   color: #000000ff;
   font-size: 2rem;
-  font-weight: 600;
   margin: 0 0 1rem 0;
 
-  font-family: "Great Vibes", cursive;
+  font-family: "Francisco", "Great Vibes", cursive;
   font-weight: 400;
   font-style: normal;  
 }
 
-.main .abstract .when, .main .abstract .where {
+.main .context .abstract .when, .context .main .abstract .where {
   color: #000000ff;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  padding: 0.2rem 0;
 }
 
-.main .abstract .where {
+.main .context .abstract .where {
   margin: 0 0 2rem 0;
 }
 
@@ -400,11 +426,11 @@ audio {
   left: 1.5rem;
   top: 1.5rem;
   font-size: 0.875rem;
-  color: #000000c0;
+  color: #00000050;
   background: #ffffff50;
   border-radius: 50%;
   
-  box-shadow: 0 0 5px #000000a0;
+  box-shadow: 0 0 5px #00000050;
   z-index: 10;
 
   width: 2.3rem;
