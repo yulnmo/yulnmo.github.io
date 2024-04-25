@@ -569,3 +569,30 @@ a, a:visited {
 .share-to-kakao {
   margin: 0 1rem 0 0;
 }
+
+.image-viewer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 120;
+
+  background: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-viewer img {
+  width: 100%;
+}
+
+.image-viewer .slide-container {
+  width: 100%;
+}
+
+.image-viewer .slide-container div {
+  width: 100%;
+}

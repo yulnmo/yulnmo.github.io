@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState, MouseEvent } from 'react';
+import React, { useEffect, useRef, useState, MouseEvent, KeyboardEvent } from 'react';
 import '../styles/App.css';
 import MyClipboard from '../service/MyClipboard';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -41,6 +43,8 @@ function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMapApi, setIsMapApi] = useState(true);
+  const [imageMode, setImageMode] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
     play();
@@ -157,221 +161,265 @@ function App() {
     MyClipboard.copy(baseUrl);
   }
 
+  function handleImageClick(photoIndex: number) {
+    setImageIndex(photoIndex);
+    setImageMode(true);
+  }
+
+  function handleImageViewerKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setImageMode(false);
+    }
+  }
+
   return (
-    <div className="main">
-      <div className="audio-controller" onClick={handleTogglePlay} >
-        <div className="inside">
-          <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} />
-        </div>
-        <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
-          <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
-        </audio>
-      </div>
+    <>
+      <div className="image-viewer" style={imageMode ? {} : {'display': 'none'}} onKeyDownCapture={handleImageViewerKeyDown}>
+        <div className="slide-container">
+          <Slide
+            autoplay={false}
+            duration={5000}
+            transitionDuration={250}
+            infinite= {true}
+            indicators= {true}
+            arrows={true}
+          >
+          {
+              photos.map((photoFile, index)=> {
+                const divStyle = {
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundSize: 'cover',
+                  height: '560px'
+                }
 
-      <div className="header">
-        <div className="abstract">
-          <div className="mark">WEDDING INVITATION</div>
-          <div className="who"><span>유석모 </span><div className="line"><div className="stroke"></div></div><span> 이지율</span></div>
-        </div>
-      </div>
+                const photoUrl = `${photoBaseUrl}/${photoFile}.jpeg`;
 
-      <div className="intro">
-        <div className="overlay" />
-        <div className="border" />
-        <img src={`${photoBaseUrl}/010.jpeg`} className="image" />
-      </div>
-
-      <div className="context">
-        <div className="abstract">
-          <div className="who">Seokmo and Jiyul</div>
-          <div className="when">2024년 6월 22일 토요일 오전 11시 30분</div>
-          <div className="where">충무로 라비두스</div>
-        </div>
-
-        <p className="category">
-          Invitation
-        </p>
-        
-        <div className="quote">
-          {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
-          <p className="contents">{quoteReference}</p>
-        </div>
-        <div className="invitation">
-          {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it.trim() === '' ? <span>&nbsp;</span> : it}</p>)}
-        </div>
-
-        <div className="parents">
-          <table>
-            <tbody>
-              <tr>
-                <td><span>유승정 • 강미옥</span><small>의 아들 </small></td>
-                <td><span>석모 </span><span className="phone"><a href="tel:01063969094"><i className="fi fi-sr-phone-call"/></a></span></td>
-              </tr>
-              <tr>
-                <td><span>이동관 • 이경래</span><small>의 딸 </small></td>
-                <td><span>지율 </span><span className="phone"><a href="tel:01048763918"><i className="fi fi-sr-phone-call"/></a></span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="bridge-image">
-          <img src={`${photoBaseUrl}/009.jpeg`}/>
-        </div>
-
-        <div className="calendar">
-            <div className="row">
-              <div className="item title">
-                2024. 06. 22
-              </div>
-            </div>
-            <div className="row">
-              <div className="item subtitle">
-                토요일 오전 11시 30분
-              </div>
-            </div>
-            <div className="row">
-              {'일월화수목금토'.split('').map((it, index) => <div key={index} className={`item weekdays${it === '일' ? ' sun' : (it === '토' ? ' sat' : '')}`}>{it}</div>)}
-            </div>
-            {
-              [...new Array(Math.ceil((targetDate.getDay() + days) / 7)).keys()].map((_, index) => {
-                return <div key={index} className="row">
-                  {[... new Array(7).keys()].map((_, index2) => {
-                      const date = new Date(targetDate.getTime() - (targetDate.getDate() - 1) * 86400000);
-                      date.setDate(-date.getDay() + date.getDate() + index * 7 + index2);
-                      if (date.getMonth() === targetDate.getMonth()) {
-                        return <div key={index2} className={`item date${date.getDay() === 0 ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
-                            <div className={date.getDate() === targetDate.getDate() ? 'target' : ''}>
-                              {date.getDate()}
-                            </div>
-                          </div>;
-                      } else {
-                        return <div key={index2} className="item date"></div>;
-                      }
-                  })}
-                </div>;
-              })
-            }
-            <div className="row">
-              <div className="item left-days">
-                <div>
-                  <span>석모 </span><span className="heart">♥︎</span><span> 지율의 결혼식이 </span>
-                  <span className="highlight">{(() => {
-                    const now = new Date();
-                    now.setHours(0);
-                    now.setMinutes(0);
-                    now.setSeconds(0);
-                    now.setMilliseconds(0);
-                    
-                    const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
-                    return diff;
-                  })()}일</span>
-                  <span> 남았습니다.</span>
+                return <div key={index}>
+                  <div style={{...divStyle, 'backgroundImage': `url(${photoUrl})`, 'width': '100%' }} />
                 </div>
-              </div>
-            </div>
+              })
+            } 
+          </Slide>
+        </div>
+      </div>
+      <div className="main" style={!imageMode ? {} : {'display': 'none'}} >
+        <div className="audio-controller" onClick={handleTogglePlay} >
+          <div className="inside">
+            <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} />
+          </div>
+          <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
+            <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
+          </audio>
         </div>
 
-        <div className="gallery">
-          <p className="category">
-            Gallery
-          </p>
-        </div>
-
-        <div className="photo">
-          <div className="scrollable">
-            {[...new Array(photoRows).keys()].map((row, index) => {
-                return <div className="photo-row" key={index}>
-                  {
-                    [...new Array(photoColumns).keys()].map((col, index2) => {
-                      const photoIndex = row * photoColumns + col;
-                      const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
-                      return <div className="item" key={index2}>
-                        <img src={photoUrl}/>
-                      </div>;
-                    })
-                  }
-                </div>; 
-            })}
+        <div className="header">
+          <div className="abstract">
+            <div className="mark">WEDDING INVITATION</div>
+            <div className="who"><span>유석모 </span><div className="line"><div className="stroke"></div></div><span> 이지율</span></div>
           </div>
         </div>
-        <div className="location">
-          <p className="category">
-            Location
-          </p>
+
+        <div className="intro">
+          <div className="overlay" />
+          <div className="border" />
+          <img src={`${photoBaseUrl}/010.jpeg`} className="image" />
         </div>
-        <div className="address">
-          <p className="contents">
-            <span>서울특별시 중구 필동로 5길 7</span>
-          </p>
-          <p className="contents">
-            <span>(서울특별시 중구 필동3가 62-11번지)</span>
+
+        <div className="context">
+          <div className="abstract">
+            <div className="who">Seokmo and Jiyul</div>
+            <div className="when">2024년 6월 22일 토요일 오전 11시 30분</div>
+            <div className="where">충무로 라비두스</div>
+          </div>
+
+          <p className="category">
+            Invitation
           </p>
           
-          <p className="contents">
-            <span>라비두스 </span><span><a href="tel:0222657000">02-2265-7000</a></span>
-          </p>
-        </div>
-        <div className="maps">
-          <div className="controls">
-            <input type="button" value={isMapApi ? "약도보기" : "지도보기"} onClick={handleToggleMap} />
+          <div className="quote">
+            {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
+            <p className="contents">{quoteReference}</p>
           </div>
-          <div id="map" className="map" style={!isMapApi ? {'display': 'none'} : {}} />
-          <div className="map-simple" style={isMapApi ? {'display': 'none'} : {}} >
-            <img src={`${assetsBaseUrl}/map.jpg`} />
+          <div className="invitation">
+            {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it.trim() === '' ? <span>&nbsp;</span> : it}</p>)}
           </div>
-          <div className="links">
-            <div className="link" style={{'flex': '3 0'}} data-name="navermap" onClick={handleClickLink}>
-              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/navermap.png`}/></div></div>
-              <div className="vendor">네이버 지도</div>
-            </div>
-            <div className="divider"><div className="stroke"></div></div>
-            <div className="link" style={{'flex': '3 0'}} data-name="kakaonavi" onClick={handleClickLink}>
-              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/kakaonavi.png`}/></div></div>
-              <div className="vendor">카카오 지도</div>
-            </div>
-            <div className="divider"><div className="stroke"></div></div>
-            <div className="link" style={{'flex': '2 0'}}  data-name="tmap" onClick={handleClickLink}>
-              <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/tmap.png`}/></div></div>
-              <div className="vendor">티맵</div>
-            </div>
+
+          <div className="parents">
+            <table>
+              <tbody>
+                <tr>
+                  <td><span>유승정 • 강미옥</span><small>의 아들 </small></td>
+                  <td><span>석모 </span><span className="phone"><a href="tel:01063969094"><i className="fi fi-sr-phone-call"/></a></span></td>
+                </tr>
+                <tr>
+                  <td><span>이동관 • 이경래</span><small>의 딸 </small></td>
+                  <td><span>지율 </span><span className="phone"><a href="tel:01048763918"><i className="fi fi-sr-phone-call"/></a></span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div className="information">
-          {informations.map((it, index) => {
-            return <div className="container" key={index}>
-              <div>
-                <p className="subtitle">
-                  {it[0]}
-                </p>
+
+          <div className="bridge-image">
+            <img src={`${photoBaseUrl}/009.jpeg`}/>
+          </div>
+
+          <div className="calendar">
+              <div className="row">
+                <div className="item title">
+                  2024. 06. 22
+                </div>
               </div>
-              <div>
-                {(it[1] as string[]).map((row, index2) => {
-                  const rows = row.split("\n");
-                  return <p className="item" key={index2}>
-                    {rows[0]}
-                    {rows.length > 1 ? <>
-                      <br />
-                      {rows.slice(1).map((inner, index3) => <span key={index3} className="inner">{inner}</span>)}
-                    </> : <></>}
-                  </p>;
-                }
-                )}
+              <div className="row">
+                <div className="item subtitle">
+                  토요일 오전 11시 30분
+                </div>
               </div>
-            </div>;
-          })}
-        </div>
-        <div className="appendix">
-          <input className="share-to-kakao" type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
-          <input className="copy-url" type="button" value="URL 복사하기" onClick={handleCopyUrl}/>
-        </div>
-        <div className="tail">
-          <p className="contents">
-            Seokmo & Jiyul
-          </p>
+              <div className="row">
+                {'일월화수목금토'.split('').map((it, index) => <div key={index} className={`item weekdays${it === '일' ? ' sun' : (it === '토' ? ' sat' : '')}`}>{it}</div>)}
+              </div>
+              {
+                [...new Array(Math.ceil((targetDate.getDay() + days) / 7)).keys()].map((_, index) => {
+                  return <div key={index} className="row">
+                    {[... new Array(7).keys()].map((_, index2) => {
+                        const date = new Date(targetDate.getTime() - (targetDate.getDate() - 1) * 86400000);
+                        date.setDate(-date.getDay() + date.getDate() + index * 7 + index2);
+                        if (date.getMonth() === targetDate.getMonth()) {
+                          return <div key={index2} className={`item date${date.getDay() === 0 ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
+                              <div className={date.getDate() === targetDate.getDate() ? 'target' : ''}>
+                                {date.getDate()}
+                              </div>
+                            </div>;
+                        } else {
+                          return <div key={index2} className="item date"></div>;
+                        }
+                    })}
+                  </div>;
+                })
+              }
+              <div className="row">
+                <div className="item left-days">
+                  <div>
+                    <span>석모 </span><span className="heart">♥︎</span><span> 지율의 결혼식이 </span>
+                    <span className="highlight">{(() => {
+                      const now = new Date();
+                      now.setHours(0);
+                      now.setMinutes(0);
+                      now.setSeconds(0);
+                      now.setMilliseconds(0);
+                      
+                      const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
+                      return diff;
+                    })()}일</span>
+                    <span> 남았습니다.</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div className="gallery">
+            <p className="category">
+              Gallery
+            </p>
+          </div>
+
+          <div className="photo">
+            <div className="scrollable">
+              {[...new Array(photoRows).keys()].map((row, index) => {
+                  return <div className="photo-row" key={index}>
+                    {
+                      [...new Array(photoColumns).keys()].map((col, index2) => {
+                        const photoIndex = row * photoColumns + col;
+                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
+                        return <div className="item" key={index2}>
+                          <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
+                        </div>;
+                      })
+                    }
+                  </div>; 
+              })}
+            </div>
+          </div>
+          <div className="location">
+            <p className="category">
+              Location
+            </p>
+          </div>
+          <div className="address">
+            <p className="contents">
+              <span>서울특별시 중구 필동로 5길 7</span>
+            </p>
+            <p className="contents">
+              <span>(서울특별시 중구 필동3가 62-11번지)</span>
+            </p>
+            
+            <p className="contents">
+              <span>라비두스 </span><span><a href="tel:0222657000">02-2265-7000</a></span>
+            </p>
+          </div>
+          <div className="maps">
+            <div className="controls">
+              <input type="button" value={isMapApi ? "약도보기" : "지도보기"} onClick={handleToggleMap} />
+            </div>
+            <div id="map" className="map" style={!isMapApi ? {'display': 'none'} : {}} />
+            <div className="map-simple" style={isMapApi ? {'display': 'none'} : {}} >
+              <img src={`${assetsBaseUrl}/map.jpg`} />
+            </div>
+            <div className="links">
+              <div className="link" style={{'flex': '3 0'}} data-name="navermap" onClick={handleClickLink}>
+                <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/navermap.png`}/></div></div>
+                <div className="vendor">네이버 지도</div>
+              </div>
+              <div className="divider"><div className="stroke"></div></div>
+              <div className="link" style={{'flex': '3 0'}} data-name="kakaonavi" onClick={handleClickLink}>
+                <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/kakaonavi.png`}/></div></div>
+                <div className="vendor">카카오 지도</div>
+              </div>
+              <div className="divider"><div className="stroke"></div></div>
+              <div className="link" style={{'flex': '2 0'}}  data-name="tmap" onClick={handleClickLink}>
+                <div className="image"><div className="inner"><img src={`${assetsBaseUrl}/tmap.png`}/></div></div>
+                <div className="vendor">티맵</div>
+              </div>
+            </div>
+          </div>
+          <div className="information">
+            {informations.map((it, index) => {
+              return <div className="container" key={index}>
+                <div>
+                  <p className="subtitle">
+                    {it[0]}
+                  </p>
+                </div>
+                <div>
+                  {(it[1] as string[]).map((row, index2) => {
+                    const rows = row.split("\n");
+                    return <p className="item" key={index2}>
+                      {rows[0]}
+                      {rows.length > 1 ? <>
+                        <br />
+                        {rows.slice(1).map((inner, index3) => <span key={index3} className="inner">{inner}</span>)}
+                      </> : <></>}
+                    </p>;
+                  }
+                  )}
+                </div>
+              </div>;
+            })}
+          </div>
+          <div className="appendix">
+            <input className="share-to-kakao" type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
+            <input className="copy-url" type="button" value="URL 복사하기" onClick={handleCopyUrl}/>
+          </div>
+          <div className="tail">
+            <p className="contents">
+              Seokmo & Jiyul
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
