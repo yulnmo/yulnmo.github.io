@@ -37,6 +37,7 @@ function App() {
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMapApi, setIsMapApi] = useState(true);
 
   useEffect(() => {
     play();
@@ -93,6 +94,10 @@ function App() {
       position: center,
       map: map
     });
+  }
+
+  function handleToggleMap() {
+    setIsMapApi(!isMapApi);
   }
 
   return (
@@ -239,8 +244,12 @@ function App() {
           </p>
         </div>
         <div className="maps">
-          <div id="map" className="map">
-            
+          <div className="controls">
+            <input type="button" value={isMapApi ? "약도보기" : "지도보기"} onClick={handleToggleMap} />
+          </div>
+          <div id="map" className="map" style={!isMapApi ? {'display': 'none'} : {}} />
+          <div className="map-simple" style={isMapApi ? {'display': 'none'} : {}} >
+            <img src={`${assetsBaseUrl}/map.jpg`} />
           </div>
           <p className="contents">
             <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
