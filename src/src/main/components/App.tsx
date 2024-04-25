@@ -131,7 +131,7 @@ function App() {
       objectType: 'feed',
       content: {
         title: '석모, 지율의 모바일 청첩장',
-        description: '2024년 6월 22일 오전 11시 30분 라비두스: 석모, 지율의 결혼을 축하해주세요 👰🏻‍♀️💍🤵🏻',
+        description: '석모, 지율의 결혼을 축하해주세요 👰🏻‍♀️💍🤵🏻',
         imageUrl:
           'https://yulnmo.github.io/assets/photos/009.jpeg',
         link: {
@@ -141,7 +141,7 @@ function App() {
       },
       buttons: [
         {
-          title: '석모, 지율의 모바일 청첩장',
+          title: '모바일 청첩장',
           link: {
             mobileWebUrl: 'https://yulnmo.github.io',
             webUrl: 'https://yulnmo.github.io',
