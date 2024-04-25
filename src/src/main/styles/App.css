@@ -14,6 +14,9 @@ body {
 #root {
   display: flex;
   justify-content: center;
+  background: white;
+  left: 0;
+  right: 0;
 }
 
 .main {
@@ -100,8 +103,8 @@ body {
 }
 
 .category {
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
   background: -moz-linear-gradient(right, #B08E82, #E5CACC);
