@@ -203,10 +203,12 @@ body {
 
 .photo .item {
   flex: 1 1;
+  
   overflow: hidden;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  padding: 0.2rem;
+
+  padding: 0.3rem;
 
   display: flex;
   flex-direction: column;
@@ -219,6 +221,7 @@ body {
 
 .photo .item img {
   width: 100%;
+  border-radius: 0.4rem;
 }
 
 
