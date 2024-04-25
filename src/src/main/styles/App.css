@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Francisco";
-  src: url("/assets/fonts/Francisco.woff");
+  src: url("https://yulnmo.github.io//assets/fonts/Francisco.woff");
 }
 
 html {
@@ -356,7 +356,7 @@ body {
   text-align: center;
 
   font-size: 1.35rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #000000a0;
 
   margin: 2rem 0 0.3rem 0;
