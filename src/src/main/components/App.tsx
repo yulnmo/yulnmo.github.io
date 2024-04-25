@@ -86,7 +86,7 @@ function App() {
       <div className="header">
         <div className="abstract">
           <div className="mark">WEDDING INVITATION</div>
-          <div className="who">유석모 <div className="line">&nbsp;</div> 이지율</div>
+          <div className="who"><span>유석모 </span><div className="line"><div className="stroke"></div></div><span> 이지율</span></div>
         </div>
       </div>
 

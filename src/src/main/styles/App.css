@@ -90,10 +90,15 @@ body {
 }
 
 .main .header .abstract .who .line {
-  margin: 0.35rem 1.2rem;
+  margin: 0 1.1rem;
   width: 1px;
-  height: 0.65rem;
-  border-right: 0.01rem solid #00000070;
+  padding: 0.35rem 0;
+}
+
+.main .header .abstract .who .line .stroke {
+  width: 0.01rem;
+  height: 100%;
+  background: #00000070;
 }
 
 .main .abstract div {
