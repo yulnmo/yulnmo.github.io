@@ -105,7 +105,7 @@ function App() {
   function handleClickLink(e: MouseEvent<HTMLDivElement>) {
     switch (e.currentTarget.getAttribute('data-name')) {
       case 'navermap':
-        window.open('https://naver.me/5PS2ZlQL');
+        window.open('https://naver.me/IgDjfpX3');
         break;
       case 'kakaonavi':
         window.open('https://kko.to/u3xEZWI-dj');
