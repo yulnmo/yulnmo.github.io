@@ -64,20 +64,25 @@ function App() {
     }
   }
 
+  function handleTogglePlay() {
+      if (isPlaying) {
+        stop();
+      } else {
+        play();
+      }
+  }
+
   return (
     <div className="main">
-      <div className="audio-controller">
-        <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} onClick={() => {
-          if (isPlaying) {
-            stop();
-          } else {
-            play();
-          }
-        }} />
+      <div className="audio-controller" onClick={handleTogglePlay} >
+        <div className="inside">
+          <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} />
+        </div>
+        <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
+          <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
+        </audio>
       </div>
-      <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
-        <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
-      </audio>
+
       <div className="intro">
         <div className="overlay" />
         <div className="border" />
@@ -90,19 +95,15 @@ function App() {
       </div>
       <div className="context">
         <p className="category">
-          
+          Invitation
         </p>
+        
         <div className="quote">
           {quoteText.split("\n").map((it, index) => <p key={index} className="contents">{it}</p>)}
           <p className="contents">{quoteReference}</p>
         </div>
         <div className="invitation">
           {invitationText.split("\n").map((it, index) => <p key={index} className="contents">{it.trim() === '' ? <span>&nbsp;</span> : it}</p>)}
-          <p className="contents reference">{invitationReference}</p>
-        </div>
-
-        <div className="bridge-image">
-          <img src={`${photoBaseUrl}/009.jpeg`}/>
         </div>
 
         <div className="parents">
@@ -119,6 +120,11 @@ function App() {
             </tbody>
           </table>
         </div>
+
+        <div className="bridge-image">
+          <img src={`${photoBaseUrl}/009.jpeg`}/>
+        </div>
+
         <div className="calendar">
             <div className="row">
               <div className="item title">
@@ -171,27 +177,29 @@ function App() {
               </div>
             </div>
         </div>
+
         <div className="gallery">
           <p className="category">
             Gallery
           </p>
         </div>
+
         <div className="photo">
           <div className="scrollable">
-              {[...new Array(photoRows).keys()].map((row, index) => {
-                  return <div className="photo-row" key={index}>
-                    {
-                      [...new Array(photoColumns).keys()].map((col, index2) => {
-                        const photoIndex = row * photoColumns + col;
-                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
-                        return <div className="item" key={index2}>
-                          <img src={photoUrl}/>
-                        </div>;
-                      })
-                    }
-                  </div>; 
-              })}
-              </div>
+            {[...new Array(photoRows).keys()].map((row, index) => {
+                return <div className="photo-row" key={index}>
+                  {
+                    [...new Array(photoColumns).keys()].map((col, index2) => {
+                      const photoIndex = row * photoColumns + col;
+                      const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
+                      return <div className="item" key={index2}>
+                        <img src={photoUrl}/>
+                      </div>;
+                    })
+                  }
+                </div>; 
+            })}
+          </div>
         </div>
         <div className="gallery">
           <p className="category">

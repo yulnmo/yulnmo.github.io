@@ -2,7 +2,7 @@
 
 html {
   font: 14px arial;
-  background: #5D555680;
+  background: #5D555640;
 }
 
 body {
@@ -14,7 +14,6 @@ body {
 #root {
   display: flex;
   justify-content: center;
-  background: white;
   left: 0;
   right: 0;
 }
@@ -23,13 +22,17 @@ body {
   max-width: 480px;
   position: relative;
   background: white;
+  width: 100%;
+
+  background: linear-gradient(90deg, white 9px, transparent 1%) center, linear-gradient(white 9px, transparent 1%) center, #e8e8e8ff;
+  background-size: 10px 10px;
 }
 
 .main .intro {
   position: relative;
   margin: 0;
   padding: 0;
-  height: 520px;
+  height: 540px;
   overflow: hidden;
 }
 
@@ -73,7 +76,7 @@ body {
 }
 
 .main .abstract .who {
-  color: #6d6d6dd0;
+  color: #000000ff;
   font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
@@ -84,7 +87,7 @@ body {
 }
 
 .main .abstract .when, .main .abstract .where {
-  color: #00000080;
+  color: #000000ff;
   font-size: 0.875rem;
 }
 
@@ -103,7 +106,7 @@ body {
 }
 
 .category {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
   background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
   background: -o-linear-gradient(right, #B08E82, #E5CACC);
@@ -111,6 +114,10 @@ body {
   background: linear-gradient(to right, #B08E82, #E5CACC);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;  
 
   margin: 3rem 0 3rem 0;
 }
@@ -127,7 +134,7 @@ body {
 }
 
 .invitation .reference {
-  margin: 3rem 0 0rem 0;
+  margin: 3rem 0 0 0;
 }
 
 .bridge-image {
@@ -157,12 +164,6 @@ body {
 
 .parents small {
   margin: 0 0.3em;
-}
-
-.gallery {
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  font-style: normal;  
 }
 
 .gallery .category {
@@ -235,18 +236,25 @@ body {
   flex-direction: column;
   width: 100%;
 
-  margin: 0 0 6rem 0;
+  margin: 0 -3rem 6rem -3rem;
+  padding: 3rem;
+
+
+  background: -webkit-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
+  background: -o-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
+  background: -moz-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
+  background: linear-gradient(0deg, white, #B08E8218 10%, #B08E8218 90%, white);
 }
 
 .calendar .row {
   display: flex;
-  width: 85%;
+  width: 90%;
   margin: auto;
 }
 
 .calendar .row .item {
   flex: 1 1;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .calendar .row .item.weekdays {
@@ -297,7 +305,7 @@ body {
 }
 
 .calendar .row .item.left-days {
-  height: 5rem;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -316,14 +324,9 @@ body {
 .calendar .row .item.title {
   text-align: center;
 
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  background: -webkit-linear-gradient(left, #B08E82, #E5CACC);
-  background: -o-linear-gradient(right, #B08E82, #E5CACC);
-  background: -moz-linear-gradient(right, #B08E82, #E5CACC);
-  background: linear-gradient(to right, #B08E82, #E5CACC);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #000000a0;
 
   margin: 2rem 0 0.3rem 0;
 }
@@ -332,9 +335,9 @@ body {
   text-align: center;
 
   font-size: 1rem;
-  color: #B08E82e0;
+  color: #000000a0;
 
-  margin: 0rem 0 2rem 0;
+  margin: 0 0 3rem 0;
 }
 
 .schedule {
@@ -369,12 +372,13 @@ body {
 
 .information .container .item {
   font-size: 1rem;
-  padding: 0 0 0 0rem;
+  padding: 0;
+  margin: 0.5rem 0;
 }
 .information .container .item .inner {
   font-size: 0.875rem;
   color: #00000080;
-  line-height: 2rem;
+  line-height: 2.5rem;
   padding: 0;
 }
 
@@ -396,12 +400,24 @@ audio {
   left: 1.5rem;
   top: 1.5rem;
   font-size: 0.875rem;
-  color: #ffffffff;
-  background: #B08E82e0;
+  color: #000000c0;
+  background: #ffffff50;
   border-radius: 50%;
-  padding: 0.5rem 0.65rem;
+  
   box-shadow: 0 0 5px #000000a0;
   z-index: 10;
+
+  width: 2.3rem;
+  height: 2.3rem;
+
+  display: flex;
+  justify-content: center;
+}
+
+.audio-controller .inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 a, a:visited {
@@ -409,7 +425,7 @@ a, a:visited {
 }
 
 .phone {
-  margin: 0 0 0 0.4rem;
+  margin: 0.4rem;
 }
 
 .phone a {
