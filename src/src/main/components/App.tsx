@@ -22,7 +22,8 @@ function App() {
   ];
 
   const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
-  const photoBaseUrl = "/photos";
+  const assetsBaseUrl = "/assets";
+  const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const photoRows = 2;
   const photoColumns = 15;
   const targetDate = new Date(2024, 6 - 1, 22);
@@ -75,7 +76,7 @@ function App() {
         }} />
       </div>
       <audio autoPlay={true} controls={false} loop={true} ref={audioRef}>
-        <source src="/music.mp3" type="audio/mpeg" />
+        <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
       </audio>
       <div className="intro">
         <div className="overlay" />
@@ -85,7 +86,7 @@ function App() {
           <div className="when">24 . 06 . 22 • 토요일 • 11 : 30 am</div>
           <div className="where">충무로 라비두스</div>
         </div>
-        <img src="/photos/010.jpeg" className="image" />
+        <img src={`${photoBaseUrl}/010.jpeg`} className="image" />
       </div>
       <div className="context">
         <p className="category">
@@ -101,7 +102,7 @@ function App() {
         </div>
 
         <div className="bridge-image">
-          <img src="/photos/009.jpeg"/>
+          <img src={`${photoBaseUrl}/009.jpeg`}/>
         </div>
 
         <div className="parents">
@@ -199,7 +200,7 @@ function App() {
         </div>
         <div className="maps">
           <div className="map">
-            <img src="/map.jpg" className="image" />
+            <img src={`${assetsBaseUrl}/map.jpg`} className="image" />
           </div>
           <p className="contents">
             <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
