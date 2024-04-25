@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, MouseEvent } from 'react';
 import '../styles/App.css';
+import MyClipboard from '../service/MyClipboard';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -24,6 +25,7 @@ function App() {
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
   ];
 
+  const baseUrl = 'https://yulnmo.github.io';
   const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
@@ -133,22 +135,26 @@ function App() {
         title: '석모, 지율의 모바일 청첩장',
         description: '석모, 지율의 결혼을 축하해주세요 👰🏻‍♀️💍🤵🏻',
         imageUrl:
-          'https://yulnmo.github.io/assets/photos/009.jpeg',
+          `${baseUrl}/assets/photos/009.jpeg`,
         link: {
-          mobileWebUrl: 'https://yulnmo.github.io',
-          webUrl: 'https://yulnmo.github.io',
+          mobileWebUrl: baseUrl,
+          webUrl: baseUrl,
         },
       },
       buttons: [
         {
-          title: '모바일 청첩장',
+          title: '모바일 청첩장 열기',
           link: {
-            mobileWebUrl: 'https://yulnmo.github.io',
-            webUrl: 'https://yulnmo.github.io',
+            mobileWebUrl: baseUrl,
+            webUrl: baseUrl,
           },
         }
       ]
     });
+  }
+
+  function handleCopyUrl(e: MouseEvent<HTMLDivElement>) {
+    MyClipboard.copy(baseUrl);
   }
 
   return (
@@ -356,7 +362,8 @@ function App() {
           })}
         </div>
         <div className="appendix">
-          <input type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
+          <input className="share-to-kakao" type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
+          <input className="copy-url" type="button" value="URL 복사하기" onClick={handleCopyUrl}/>
         </div>
         <div className="tail">
           <p className="contents">

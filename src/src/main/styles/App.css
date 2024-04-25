@@ -564,3 +564,7 @@ a, a:visited {
 .phone i {
   font-size: 0.875em;
 }
+
+.share-to-kakao {
+  margin: 0 1rem 0 0;
+}
