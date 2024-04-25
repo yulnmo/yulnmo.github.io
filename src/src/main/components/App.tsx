@@ -238,9 +238,21 @@ function App() {
             })}
           </div>
         </div>
-        <div className="gallery">
+        <div className="location">
           <p className="category">
             Location
+          </p>
+        </div>
+        <div className="address">
+          <p className="contents">
+            <span>서울특별시 중구 필동로 5길 7</span>
+          </p>
+          <p className="contents">
+            <span>(서울특별시 중구 필동3가 62-11번지)</span>
+          </p>
+          
+          <p className="contents">
+            <span>라비두스 </span><span><a href="tel:0222657000">02-2265-7000</a></span>
           </p>
         </div>
         <div className="maps">
@@ -253,17 +265,6 @@ function App() {
           </div>
           <p className="contents">
             <a href="https://naver.me/GMWNlBjS">네이버 지도로 이동</a>
-          </p>
-        </div>
-        <div className="schedule">
-          <p className="contents">
-            라비두스
-          </p>
-          <p className="contents">
-            서울특별시 중구필동로 5길 7
-          </p>
-          <p className="contents">
-            <a href="tel:0222657000">02-2265-7000</a>
           </p>
         </div>
         <div className="information">
