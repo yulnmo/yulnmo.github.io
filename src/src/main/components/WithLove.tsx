@@ -21,14 +21,14 @@ const WithLove = ({title, accounts}: WithLoveProps) => {
         setVisible(!visible);
     }
 
-    return <div className={`with-love` + (visible ? ' visible' : '')} onClick={handleClick}>
-        <div className="title">
+    return <div className={`with-love` + (visible ? ' visible' : '')}>
+        <div className="title" onClick={handleClick}>
             <span>{title} 측 계좌번호</span>
-        </div>
-        <div className="arrows">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={`arrow` + (visible ? ' rotate' : '')}>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
+            <div className="arrows">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={`arrow` + (visible ? ' rotate' : '')}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
         </div>
         <div className="group">
             {accounts.map((account, index) => {

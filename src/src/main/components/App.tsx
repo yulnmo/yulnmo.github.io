@@ -5,6 +5,7 @@ import 'react-slideshow-image/dist/styles.css';
 import ImageViewer from './ImageViewer';
 import Map from './Map';
 import WithLove from './WithLove';
+import Contacts from './Contacts';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -219,15 +220,30 @@ function App() {
               <tbody>
                 <tr>
                   <td><span>유승정 • 강미옥</span><small>의 아들 </small></td>
-                  <td><span>석모 </span><span className="phone"><a href="tel:01063969094"><i className="fi fi-sr-phone-call"/></a></span></td>
+                  <td><span>석모 </span></td>
                 </tr>
                 <tr>
                   <td><span>이동관 • 이경래</span><small>의 딸 </small></td>
-                  <td><span>지율 </span><span className="phone"><a href="tel:01048763918"><i className="fi fi-sr-phone-call"/></a></span></td>
+                  <td><span>지율 </span></td>
                 </tr>
               </tbody>
             </table>
           </div>
+
+          <Contacts 
+            contacts={[
+              [
+                {role: '신랑', name: '유석모', number: '010-6396-9094'},
+                {role: '아버지', name: '유승정', number: '010-3029-9094'},
+                {role: '어머니', name: '강미옥', number: '010-4488-9094'}
+              ],
+              [
+                {role: '신부', name: '이지율', number: '010-4876-3918'},
+                {role: '아버지', name: '이동관', number: '010-4601-1075'},
+                {role: '어머니', name: '이경래', number: '010-4123-1737'}
+              ]
+            ]}
+          />
 
           <div className="bridge-image">
             <img src={`${photoBaseUrl}/009.jpeg`}/>
