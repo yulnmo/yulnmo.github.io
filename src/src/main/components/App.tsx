@@ -382,8 +382,8 @@ function App() {
             />
           </div>
           <div className="appendix">
-            <input className="share-to-kakao" type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
-            <input className="copy-url" type="button" value="URL 복사하기" onClick={handleCopyUrl}/>
+            <input className="share-to-kakao" type="button" value="카카오톡 공유하기" onClick={handleShareToKakao}/>
+            <input className="copy-url" type="button" value="링크주소 복사하기" onClick={handleCopyUrl}/>
           </div>
           <div className="tail">
             <p className="contents">

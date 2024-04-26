@@ -27,7 +27,7 @@ const WithLove = ({title, accounts}: WithLoveProps) => {
         </div>
         <div className="arrows">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={`arrow` + (visible ? ' rotate' : '')}>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
         </div>
         <div className="group">
@@ -36,7 +36,7 @@ const WithLove = ({title, accounts}: WithLoveProps) => {
                     <div className="row">
                         <div className="col left">
                             <span className="org">{account.org}</span>
-                            <span className="number"> {account.number}</span>
+                            <span className="number"> {account.number.split('').map((it, index2) => <span key={index2}>{it}</span>)}</span>
                         </div>
                         <div className="col right">
                             <CopyButton 
