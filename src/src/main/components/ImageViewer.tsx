@@ -25,6 +25,9 @@ const ImageViewer = ({imageMode, setImageMode, photos, photoBaseUrl}: ImageViewe
         onKeyDownCapture={handleImageViewerKeyDown} 
         onClick={(e) => {setImageMode(false);}}
     >
+        <div className="close" onCanPlay={(event) => {setImageMode(false);}}>
+            <i className="fi fi-sr-x"/>
+        </div>
         <div className="slide-container" onClick={(event) => {event.stopPropagation();}}>
         <Slide
             autoplay={false}
@@ -39,23 +42,13 @@ const ImageViewer = ({imageMode, setImageMode, photos, photoBaseUrl}: ImageViewe
                 const photoUrl = `${photoBaseUrl}/${photoFile}.jpeg`;
 
                 return <div key={index} className="item">
-                    <img 
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundSize: 'cover',
-                            'backgroundImage': `url(${photoUrl})`,
-                            'width': '100%' 
-                        }}
-                        src={photoUrl}
-                    />
+                    <img className="image" src={photoUrl} />
                 </div>;
             })
             } 
         </Slide>
         </div>
     </div>;
-}
+};
 
 export default ImageViewer;

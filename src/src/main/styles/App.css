@@ -416,7 +416,7 @@ body {
   width: 100%;
   background: white;
   border: 1px solid #00000010;
-  border-radius: 0.3rem;
+  border-radius: 0rem;
 }
 
 .maps .links .link {
@@ -587,10 +587,6 @@ a, a:visited {
   backdrop-filter: blur(0.8rem);
 }
 
-.image-viewer img {
-  width: 100%;
-}
-
 .image-viewer .slide-container {
   width: 100%;
 }
@@ -603,12 +599,36 @@ a, a:visited {
   justify-content: center;
 }
 
+.image-viewer .slide-container .item .image {
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
+}
+
 .image-viewer .slide-container .nav.default-nav {
   background: transparent;
 }
  
 .image-viewer .slide-container .nav.default-nav path {
   fill: #ffffffd0;
+  stroke: #00000050;
+}
+
+.image-viewer .close {
+  position: fixed;
+  top: 1.7rem;
+  right: 1.7rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  z-index: 130;
+
+  font-size: 1.2rem;
+  color: #ffffffd0;
+  text-shadow: 0 0 0.2rem #000000a0;
+  font-weight: 600 !important;
+
+  display: flex;
+  justify-content: center;
 }
 
 .no-scroll {
