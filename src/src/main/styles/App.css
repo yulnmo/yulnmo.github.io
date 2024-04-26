@@ -271,10 +271,10 @@ body {
   padding: 3rem;
 
 
-  background: -webkit-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
-  background: -o-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
-  background: -moz-linear-gradient(90deg, white, #B08E8218 5%, #B08E8218 95%, white);
-  background: linear-gradient(0deg, white, #B08E8218 10%, #B08E8218 90%, white);
+  background: -webkit-linear-gradient(90deg, transparent, #B08E8218 5%, #B08E8218 95%, transparent);
+  background: -o-linear-gradient(90deg, transparent, #B08E8218 5%, #B08E8218 95%, transparent);
+  background: -moz-linear-gradient(90deg, transparent, #B08E8218 5%, #B08E8218 95%, transparent);
+  background: linear-gradient(0deg, transparent, #B08E8218 10%, #B08E8218 90%, transparent);
 }
 
 .calendar .row {
@@ -578,11 +578,13 @@ a, a:visited {
   bottom: 0;
   z-index: 120;
 
-  background: black;
+  background: #ffffffd0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  backdrop-filter: blur(0.8rem);
 }
 
 .image-viewer img {
@@ -593,6 +595,22 @@ a, a:visited {
   width: 100%;
 }
 
-.image-viewer .slide-container div {
+.image-viewer .slide-container .item {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-viewer .slide-container .nav.default-nav {
+  background: transparent;
+}
+ 
+.image-viewer .slide-container .nav.default-nav path {
+  fill: #ffffffd0;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

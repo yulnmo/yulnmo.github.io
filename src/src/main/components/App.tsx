@@ -3,6 +3,7 @@ import '../styles/App.css';
 import MyClipboard from '../service/MyClipboard';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import ImageViewer from './ImageViewer';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -51,6 +52,15 @@ function App() {
     map();
     kakao();
   }, []);
+
+  useEffect(() => {
+    const body = document.querySelector('body')!;
+    if (imageMode) {
+      body.classList.add('no-scroll');
+    } else {
+      body.classList.remove('no-scroll');
+    }
+  }, [imageMode]);
 
   function play() {
     if (audioRef.current !== null) {
@@ -166,46 +176,23 @@ function App() {
     setImageMode(true);
   }
 
-  function handleImageViewerKeyDown(e: KeyboardEvent<HTMLDivElement>) {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      setImageMode(false);
-    }
+  function isHoliday(date: Date) {
+    const holidays = ["01-01", "03-01", "05-05", "06-06", "08-15", "10-03", "10-09", "12-25"];
+    const target = (date.getMonth() + 1).toString().padStart(2, "0") + 
+      "-" +
+      date.getDate().toString().padStart(2, "0");
+    return holidays.includes(target);
   }
 
   return (
     <>
-      <div className="image-viewer" style={imageMode ? {} : {'display': 'none'}} onKeyDownCapture={handleImageViewerKeyDown}>
-        <div className="slide-container">
-          <Slide
-            autoplay={false}
-            duration={5000}
-            transitionDuration={250}
-            infinite= {true}
-            indicators= {true}
-            arrows={true}
-          >
-          {
-              photos.map((photoFile, index)=> {
-                const divStyle = {
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundSize: 'cover',
-                  height: '560px'
-                }
-
-                const photoUrl = `${photoBaseUrl}/${photoFile}.jpeg`;
-
-                return <div key={index}>
-                  <div style={{...divStyle, 'backgroundImage': `url(${photoUrl})`, 'width': '100%' }} />
-                </div>
-              })
-            } 
-          </Slide>
-        </div>
-      </div>
-      <div className="main" style={!imageMode ? {} : {'display': 'none'}} >
+      <ImageViewer 
+        imageMode={imageMode}
+        setImageMode={setImageMode}
+        photos={photos}
+        photoBaseUrl={photoBaseUrl}
+      />
+      <div className="main" >
         <div className="audio-controller" onClick={handleTogglePlay} >
           <div className="inside">
             <i className={isPlaying ? "fi fi-ss-volume" : "fi fi-ss-volume-slash"} />
@@ -287,7 +274,7 @@ function App() {
                         const date = new Date(targetDate.getTime() - (targetDate.getDate() - 1) * 86400000);
                         date.setDate(-date.getDay() + date.getDate() + index * 7 + index2);
                         if (date.getMonth() === targetDate.getMonth()) {
-                          return <div key={index2} className={`item date${date.getDay() === 0 ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
+                          return <div key={index2} className={`item date${date.getDay() === 0 || isHoliday(date) ? ' sun' : (date.getDay() === 6 ? ' sat' : '')}`}>
                               <div className={date.getDate() === targetDate.getDate() ? 'target' : ''}>
                                 {date.getDate()}
                               </div>
