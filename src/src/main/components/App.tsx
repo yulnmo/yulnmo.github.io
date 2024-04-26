@@ -4,6 +4,7 @@ import MyClipboard from '../service/MyClipboard';
 import 'react-slideshow-image/dist/styles.css';
 import ImageViewer from './ImageViewer';
 import Map from './Map';
+import WithLove from './WithLove';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -201,7 +202,7 @@ function App() {
             <div className="where">충무로 라비두스</div>
           </div>
 
-          <p className="category">
+          <p className="category font-script">
             Invitation
           </p>
           
@@ -286,7 +287,7 @@ function App() {
           </div>
 
           <div className="gallery">
-            <p className="category">
+            <p className="category font-script">
               Gallery
             </p>
           </div>
@@ -309,7 +310,7 @@ function App() {
             </div>
           </div>
           <div className="location">
-            <p className="category">
+            <p className="category font-script">
               Location
             </p>
           </div>
@@ -351,6 +352,34 @@ function App() {
                 </div>
               </div>;
             })}
+          </div>
+          <div className="with-loves">
+            <p className="category">
+              마음 전하실 곳
+            </p>
+            <div className="description">
+              <p>참석이 어려워 직접 축하를 전하지 못하는</p>
+              <p>분들을 위해 계좌번호를 기재하였습니다.</p>
+              <p>넓은 마음으로 양해 부탁드립니다.</p>
+              <p>전해주시는 진심은 소중하게 간직하여</p>
+              <p>좋은 부부의 모습으로 보답하겠습니다.</p>
+            </div>
+            <WithLove 
+              title="신랑"
+              accounts={[
+                {role: '신랑', name: '유석모', org: '신한', number: '110-339-802812'},
+                {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806'},
+                {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114'}
+              ]}
+            />
+            <WithLove 
+              title="신부"
+              accounts={[
+                {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030'},
+                {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247'},
+                {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571'}
+              ]}
+            />
           </div>
           <div className="appendix">
             <input className="share-to-kakao" type="button" value="카톡으로 공유하기" onClick={handleShareToKakao}/>
