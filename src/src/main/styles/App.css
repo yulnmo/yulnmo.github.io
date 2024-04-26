@@ -292,6 +292,7 @@ body {
 .photo .photo-row {
   display: flex;
   width: 180rem;
+  padding: 0 1rem;
 }
 
 .photo .item {
@@ -301,7 +302,7 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 
-  padding: 0.3rem;
+  padding: 0.4rem;
 
   display: flex;
   flex-direction: column;
