@@ -286,7 +286,7 @@ function App() {
                 <div className="item left-days">
                   <div>
                     <span>석모 </span><span className="heart">♥︎</span><span> 지율의 결혼식이 </span>
-                    <span className="highlight">{(() => {
+                    {(() => {
                       const now = new Date();
                       now.setHours(0);
                       now.setMinutes(0);
@@ -294,9 +294,24 @@ function App() {
                       now.setMilliseconds(0);
                       
                       const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
-                      return diff;
-                    })()}일</span>
-                    <span> 남았습니다.</span>
+                      
+                      if (diff > 0) {
+                        return <>
+                          <span className="highlight">{diff}일</span>
+                          <span> 남았습니다.</span>
+                        </>;
+                      } else if (diff === 0) {
+                        return <>
+                          <span className="highlight">오늘</span>
+                          <span>입니다.</span>
+                        </>;
+                      } else {
+                        return <>
+                          <span className="highlight">{-diff}일</span>
+                          <span> 지났습니다.</span>
+                        </>;
+                      }
+                    })()}
                   </div>
                 </div>
               </div>
