@@ -172,6 +172,7 @@ function App() {
         setImageMode={setImageMode}
         photos={photos}
         photoBaseUrl={photoBaseUrl}
+        imageIndex={imageIndex}
       />
       <div className="main" >
         <div className="audio-controller" onClick={handleTogglePlay} >
@@ -294,7 +295,7 @@ function App() {
                       now.setMilliseconds(0);
                       
                       const diff = Math.floor((targetDate.getTime() - now.getTime()) / 86400000);
-                      
+
                       if (diff > 0) {
                         return <>
                           <span className="highlight">{diff}일</span>
