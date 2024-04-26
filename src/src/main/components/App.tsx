@@ -125,8 +125,8 @@ function App() {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: '석모, 지율의 모바일 청첩장',
-        description: '석모, 지율의 결혼을 축하해주세요 👰🏻‍♀️💍🤵🏻',
+        title: '유석모 ♥︎ 이지율 결혼합니다',
+        description: '6월 22일 / 충무로 라비두스 👰🏻‍♀️💍🤵🏻',
         imageUrl:
           `${baseUrl}/assets/photos/009.jpeg`,
         link: {
