@@ -12,18 +12,23 @@ const Map = ({assetsBaseUrl}: MapProps) => {
     }
 
     function handleClickLink(e: MouseEvent<HTMLDivElement>) {
+      let link = null;
       switch (e.currentTarget.getAttribute('data-name')) {
         case 'navermap':
-          window.open('https://naver.me/IgDjfpX3');
+          link = 'https://naver.me/IgDjfpX3';
           break;
         case 'kakaonavi':
-          window.open('https://kko.to/u3xEZWI-dj');
+          link = 'https://kko.to/u3xEZWI-dj';
           break;
         case 'tmap':
-          window.open('https://poi.tmap.co.kr/sharing/positionSharing.do?contents=dHlwZT0yJnBrZXk9NTM4OTExMTAxJnBvaUlkPTUzODkxMTEmbmF2U2VxPTEmcG9pTmFtZT3rnbzruYTrkZDsiqQg7KO87LCo7J6lJmNlbnRlclg9NDU3MTkyMyZjZW50ZXJZPTEzNTE5MzYmdGltZT0yMDI064WEIDTsm5QgMjbsnbwgMjoxJnRlbD0wMi0yMjY1LTcwMDAmYWRkcj3shJzsmrgg7KSR6rWsIO2VhOuPmTPqsIAgNjItMTU=&tailParam=%7B%22reqMode%22:%221100%22,%22reqType%22:%221100%22,%22extra%22:%22112%22%7D');
+          link = 'https://poi.tmap.co.kr/sharing/positionSharing.do?contents=dHlwZT0yJnBrZXk9NTM4OTExMTAxJnBvaUlkPTUzODkxMTEmbmF2U2VxPTEmcG9pTmFtZT3rnbzruYTrkZDsiqQg7KO87LCo7J6lJmNlbnRlclg9NDU3MTkyMyZjZW50ZXJZPTEzNTE5MzYmdGltZT0yMDI064WEIDTsm5QgMjbsnbwgMjoxJnRlbD0wMi0yMjY1LTcwMDAmYWRkcj3shJzsmrgg7KSR6rWsIO2VhOuPmTPqsIAgNjItMTU=&tailParam=%7B%22reqMode%22:%221100%22,%22reqType%22:%221100%22,%22extra%22:%22112%22%7D';
           break;
         default:
           break;
+      }
+
+      if (link) {
+        const w = window.open(link, '_blank');
       }
     }
 

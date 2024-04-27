@@ -8,7 +8,7 @@ const KakaoPayButton = ({value}: KakaoPayButtonProps) => {
 
     function handleClick(e: MouseEvent<HTMLDivElement>) {
         e.stopPropagation();
-        window.open(value);
+        const w = window.open(value, '_blank');
     }
 
     if (value.trim().length > 0) {
