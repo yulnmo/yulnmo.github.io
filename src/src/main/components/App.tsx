@@ -34,6 +34,9 @@ function App() {
   const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
+  const introImageUrl = `/assets/photos/008.jpg`;
+  const bridgeImageUrl = `/assets/photos/007.jpg`;
+
   const photoRows = 2;
   const photoColumns = 15;
   const targetDate = new Date(2024, 6 - 1, 22);
@@ -153,8 +156,7 @@ function App() {
       content: {
         title: '유석모 ♥︎ 이지율 결혼합니다',
         description: '6월 22일 / 충무로 라비두스 👰🏻‍♀️💍🤵🏻',
-        imageUrl:
-          `${baseUrl}/assets/photos/009.jpeg`,
+        imageUrl: introImageUrl,
         link: {
           mobileWebUrl: baseUrl,
           webUrl: baseUrl,
@@ -246,7 +248,7 @@ function App() {
         <div className="intro">
           <div className="overlay" />
           <div className="border" />
-          <img src={`${photoBaseUrl}/010.jpeg`} className="image" />
+          <img src={introImageUrl} className="image" />
         </div>
 
         <div className="context">
@@ -301,7 +303,7 @@ function App() {
           />
 
           <div className="bridge-image">
-            <img src={`${photoBaseUrl}/009.jpeg`}/>
+            <img src={bridgeImageUrl}/>
           </div>
 
           <div className="calendar">
@@ -384,8 +386,9 @@ function App() {
                   return <div className="photo-row" key={index}>
                     {
                       [...new Array(photoColumns).keys()].map((col, index2) => {
-                        const photoIndex = row * photoColumns + col;
-                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpeg`;
+                        const photoIndex = row + col * photoRows;
+                        // const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
+                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
                         return <div className="item" key={index2}>
                           <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
                         </div>;

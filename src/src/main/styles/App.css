@@ -701,13 +701,13 @@ a, a:visited {
 
 .image-viewer .slide-container .nav.default-nav {
   background: transparent;
-  width: 1.875rem;
-  height: 1.875rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .image-viewer .slide-container .nav.default-nav svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
 }
  
 .image-viewer .slide-container .nav.default-nav path {

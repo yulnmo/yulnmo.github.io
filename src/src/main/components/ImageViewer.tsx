@@ -55,7 +55,7 @@ const ImageViewer = ({imageMode, setImageMode, photos, photoBaseUrl, imageIndex}
         >
         {
             photos.map((photoFile, index)=> {
-                const photoUrl = `${photoBaseUrl}/${photoFile}.jpeg`;
+                const photoUrl = `${photoBaseUrl}/${photoFile}.jpg`;
 
                 return <div key={index} className="item">
                     <img className="image" src={photoUrl} />

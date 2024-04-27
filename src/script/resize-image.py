@@ -18,7 +18,7 @@ with os.scandir(basePath) as it:
 				try:
 					im = Image.open(infile)
 					size = im.size
-					size = (size[0] / 2, size[1] / 2)
+					size = (size[0] / 3, size[1] / 3)
 					im.thumbnail(size, Image.Resampling.LANCZOS)
 					im.save(outfile, "JPEG")
 				except IOError:
