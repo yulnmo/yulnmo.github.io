@@ -59,7 +59,7 @@ body {
   width: 100%;
 }
 
-.main .overlay {
+.main .intro .overlay {
   position: absolute;
   left: 0;
   right: 0;
@@ -878,8 +878,9 @@ a, a:visited {
   transition: 0.5s;
 }
 
-.main .overlay {
+.main .main-overlay {
   display: none;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
@@ -889,6 +890,6 @@ a, a:visited {
   backdrop-filter: blur(0.8rem);
 }
 
-.main .overlay.visible {
+.main .main-overlay.visible {
   display: block;
 }

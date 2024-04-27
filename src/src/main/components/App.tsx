@@ -51,9 +51,7 @@ function App() {
   const [contactsVisible, setContactsVisible] = useState(false);
 
   useEffect(() => {
-    play();
-    map();
-    kakao();
+    init();
   }, []);
 
   useEffect(() => {
@@ -64,6 +62,30 @@ function App() {
       body.classList.remove('no-scroll');
     }
   }, [imageMode]);
+
+  function init() {
+    initAudio();
+    play();
+    map();
+    kakao();
+  }
+
+  function initAudio() {
+    window.onbeforeunload = () => {
+      stop();
+    };
+    if (audioRef.current) {
+      audioRef.current!.onpause = () => {
+        setIsPlaying(false);
+      };
+      audioRef.current!.onplay = () => {
+        setIsPlaying(true);
+      }
+      audioRef.current!.onplaying = () => {
+        setIsPlaying(true);
+      }
+    } 
+  }
 
   function play() {
     if (audioRef.current !== null) {
@@ -212,7 +234,7 @@ function App() {
           </audio>
         </div>
 
-        <div className={"overlay" + (contactsVisible ? " visible" : "")} onClick={(_) => {setContactsVisible(false);}} />
+        <div className={"main-overlay" + (contactsVisible ? " visible" : "")} onClick={(_) => {setContactsVisible(false);}} />
 
         <div className="header">
           <div className="abstract">
