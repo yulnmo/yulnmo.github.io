@@ -172,18 +172,26 @@ function App() {
     const contacts = document.querySelector('.contacts') as HTMLElement;
     if (root && contacts && contactsVisible) {
       root!.classList.add('no-scroll');
-
-      const rootRect = root!.getBoundingClientRect();
-      const contactsRect = contacts!.getBoundingClientRect();
-
-      root!.scrollTo({
-        top: contacts!.offsetTop - rootRect.height / 2 + contactsRect.height / 2,
-        behavior: 'smooth',
-      });
+      scrollToContactsCenter();
     } else {
       root?.classList.remove('no-scroll');
     }
   }, [contactsVisible]);
+
+  function scrollToContactsCenter() {
+    const root = document.querySelector('#root') as HTMLElement;
+    const contacts = document.querySelector('.contacts') as HTMLElement;
+
+    if (root && contacts) {
+      const rootRect = root!.getBoundingClientRect();
+      const contactsRect = contacts!.getBoundingClientRect();
+
+      root!.scrollTo({
+        top: contacts!.offsetTop - rootRect.height / 2 * 11 / 20,
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return (
     <>
@@ -431,7 +439,7 @@ function App() {
             <WithLove 
               title="신부"
               accounts={[
-                {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030', kakaopay: ''},
+                {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030', kakaopay: 'https://qr.kakaopay.com/FDzxxLTmu'},
                 {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247', kakaopay: ''},
                 {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571', kakaopay: ''}
               ]}

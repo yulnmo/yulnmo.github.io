@@ -232,8 +232,8 @@ body {
   transition: 0.5s;
 
   border: none;
-  font-size: 1.5rem;
-  margin: 0 0 6rem 0;
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 .contacts .title {
@@ -781,7 +781,7 @@ a, a:visited {
 }
 
 .contacts .group .item {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .with-love .group .item.visible, .contacts .group .item.visible {
