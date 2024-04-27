@@ -423,17 +423,17 @@ function App() {
             <WithLove 
               title="신랑"
               accounts={[
-                {role: '신랑', name: '유석모', org: '신한', number: '110-339-802812'},
-                {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806'},
-                {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114'}
+                {role: '신랑', name: '유석모', org: '신한', number: '110-339-802812', kakaopay: 'https://qr.kakaopay.com/FQmpws7tU'},
+                {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806', kakaopay: ''},
+                {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114', kakaopay: ''}
               ]}
             />
             <WithLove 
               title="신부"
               accounts={[
-                {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030'},
-                {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247'},
-                {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571'}
+                {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030', kakaopay: ''},
+                {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247', kakaopay: ''},
+                {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571', kakaopay: ''}
               ]}
             />
           </div>

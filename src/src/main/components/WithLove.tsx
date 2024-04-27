@@ -1,5 +1,6 @@
 import React, { MouseEvent, useState } from 'react';
 import CopyButton from './CopyButton';
+import KakaoPayButton from './KakaoPayButton';
 
 type WithLoveProps = {
     title: string,
@@ -10,7 +11,8 @@ export type Account = {
     org: string,
     number: string,
     name: string,
-    role: string
+    role: string,
+    kakaopay: string
 }
 
 const WithLove = ({title, accounts}: WithLoveProps) => {
@@ -50,7 +52,9 @@ const WithLove = ({title, accounts}: WithLoveProps) => {
                             <span className="name"> {account.name}</span>
                         </div>
                         <div className="col right">
-                            
+                            <KakaoPayButton 
+                                value = {account.kakaopay}
+                            />
                         </div>
                     </div>
                 </div>;
