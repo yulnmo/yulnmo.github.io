@@ -44,9 +44,11 @@ function App() {
   })();
 
   const audioRef = useRef<HTMLAudioElement>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [imageMode, setImageMode] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [contactsVisible, setContactsVisible] = useState(false);
 
   useEffect(() => {
     play();
@@ -165,6 +167,24 @@ function App() {
     return holidays.includes(target);
   }
 
+  useEffect(() => {
+    const root = document.querySelector('#root') as HTMLElement;
+    const contacts = document.querySelector('.contacts') as HTMLElement;
+    if (root && contacts && contactsVisible) {
+      root!.classList.add('no-scroll');
+
+      const rootRect = root!.getBoundingClientRect();
+      const contactsRect = contacts!.getBoundingClientRect();
+
+      root!.scrollTo({
+        top: contacts!.offsetTop - rootRect.height / 2 + contactsRect.height / 2,
+        behavior: 'smooth',
+      });
+    } else {
+      root?.classList.remove('no-scroll');
+    }
+  }, [contactsVisible]);
+
   return (
     <>
       <ImageViewer 
@@ -183,6 +203,8 @@ function App() {
             <source src={`${assetsBaseUrl}/music.mp3`} type="audio/mpeg" />
           </audio>
         </div>
+
+        <div className={"overlay" + (contactsVisible ? " visible" : "")} onClick={(_) => {setContactsVisible(false);}} />
 
         <div className="header">
           <div className="abstract">
@@ -244,6 +266,8 @@ function App() {
                 {role: '어머니', name: '이경래', number: '010-4123-1737'}
               ]
             ]}
+            setContactsVisible={setContactsVisible}
+            contactsVisible={contactsVisible}
           />
 
           <div className="bridge-image">

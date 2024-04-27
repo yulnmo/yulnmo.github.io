@@ -1,8 +1,9 @@
-import React, { MouseEvent, useState } from 'react';
-import CopyButton from './CopyButton';
+import React, { MouseEvent, useEffect, useState } from 'react';
 
 type ContactsProps = {
-    contacts: Array<Array<Contact>>
+    contacts: Array<Array<Contact>>,
+    setContactsVisible: (_: boolean) => void,
+    contactsVisible: boolean
 }
 
 export type Contact = {
@@ -11,9 +12,17 @@ export type Contact = {
     number: string
 }
 
-const Contacts = ({contacts}: ContactsProps) => {
+const Contacts = ({contacts, setContactsVisible, contactsVisible}: ContactsProps) => {
 
     const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setContactsVisible(visible);
+    }, [visible]);
+
+    useEffect(() => {
+        setVisible(contactsVisible);
+    }, [contactsVisible]);
 
     function handleClick(e: MouseEvent<HTMLDivElement>) {
         setVisible(!visible);

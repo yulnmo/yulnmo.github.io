@@ -17,16 +17,30 @@ body {
 }
 
 #root {
-  display: flex;
-  justify-content: center;
+  position: absolute;
   left: 0;
   right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#root::-webkit-scrollbar {
+  display: none;
 }
 
 .main {
   max-width: 480px;
-  position: relative;
-  background: white;
+  position: absolute;
+  /* background: white; */
   width: 100%;
 
   background: linear-gradient(90deg, #fcfcfc 9px, transparent 1%) center, linear-gradient(#fcfcfc 9px, transparent 1%) center, #e8e8e8ff;
@@ -172,9 +186,10 @@ body {
 }
 
 .bridge-image {
-  width: 100%;
+  left: 0;
+  right: 0;
   overflow: hidden;
-  margin: 3rem 0 3rem 0;
+  margin: 3rem -3rem 3rem -3rem;
 }
 
 .bridge-image img {
@@ -207,6 +222,7 @@ body {
   position: relative;
   transition: 0.5s;
   border: 1px solid #00000010;
+  z-index: 40;
 }
 
 .contacts.visible {
@@ -214,21 +230,24 @@ body {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   transition: 0.5s;
+
   border: none;
+  font-size: 1.5rem;
+  margin: 0 0 6rem 0;
 }
 
 .contacts .title {
   padding: 1rem 0;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   letter-spacing: 0.05rem;
 }
 
 .contacts .title .icon {
   display: inline-block;
   transform: rotateY(180deg);
-  font-size: 0.6rem;
+  font-size: 0.7em;
   color: #000000a0;
-  margin: 0 0.5rem 0 0;
+  margin: 0 0.8em 0 0;
 }
 
 .contacts .group.visible {
@@ -237,6 +256,10 @@ body {
 
 .contacts .group .item .row {
   display: flex;
+}
+
+.contacts .group .item .row .col {
+  overflow: hidden;
 }
 
 .contacts .group .item .row .col.left {
@@ -444,7 +467,7 @@ body {
 }
 
 .maps {
-  margin: 0 0 3rem 0;
+  margin: 0 -1rem 3rem -1rem;
 }
 
 .maps .map {
@@ -612,30 +635,18 @@ a, a:visited {
   color: #B08E82e0;
 }
 
-.phone {
-  margin: 0.4rem 0.8rem 0.4rem 0.4rem;
+.phone, .sms {
+  padding: 0.1rem 0.9rem;
 }
 
-.phone a {
+.phone a, .sms a  {
   color: #B08E82e0;
   text-decoration: none;
 }
 
-.phone i {
-  font-size: 0.875em;
-}
-
-.sms {
-  margin: 0.4rem;
-}
-
-.sms a {
-  color: #B08E82e0;
-  text-decoration: none;
-}
-
-.sms i {
-  font-size: 0.875em;
+.phone i, .sms i  {
+  /* font-size: 0.875em; */
+  font-size: 1em;;
 }
 
 .share-to-kakao {
@@ -717,7 +728,7 @@ a, a:visited {
 }
 
 .no-scroll {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .with-loves {
@@ -735,6 +746,7 @@ a, a:visited {
   background: #F7F4F3;
   margin: 0 0 1rem 0;
   position: relative;
+  font-size: 1rem;
 }
 
 .with-love .title {
@@ -757,6 +769,10 @@ a, a:visited {
   font-size: 0.875rem;
 }
 
+.contacts .group .item {
+  font-size: 1.2rem;
+}
+
 .with-love .group .item.visible, .contacts .group .item.visible {
   height: auto;
   padding: 0.4rem 0;
@@ -765,6 +781,7 @@ a, a:visited {
 }
 
 .contacts .group .item.visible {
+  padding: 0.8rem 0;
   border-bottom: none;
 }
 
@@ -823,4 +840,19 @@ a, a:visited {
 .arrows .arrow.rotate {
   transform: rotateZ(180deg);
   transition: 0.5s;
+}
+
+.main .overlay {
+  display: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  background: #000000a0;
+  backdrop-filter: blur(0.8rem);
+}
+
+.main .overlay.visible {
+  display: block;
 }
