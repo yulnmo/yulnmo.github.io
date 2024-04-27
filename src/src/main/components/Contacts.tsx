@@ -70,7 +70,15 @@ const Contacts = ({contacts, setContactsVisible, contactsVisible}: ContactsProps
                         })
                     }
                 </div>;
-            })}
+            }).reduce(
+                (a, b) => {
+                    return <>
+                        {a}
+                        <div className={`seperator` + (visible ? ' visible' : '')} />
+                        {b}
+                    </>;
+                }
+            )}
         </div>
     </div>;
 };

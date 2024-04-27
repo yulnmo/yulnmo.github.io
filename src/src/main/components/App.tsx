@@ -257,13 +257,13 @@ function App() {
             contacts={[
               [
                 {role: '신랑', name: '유석모', number: '010-6396-9094'},
-                {role: '아버지', name: '유승정', number: '010-3029-9094'},
-                {role: '어머니', name: '강미옥', number: '010-4488-9094'}
+                {role: '신랑 아버지', name: '유승정', number: '010-3029-9094'},
+                {role: '신랑 어머니', name: '강미옥', number: '010-4488-9094'}
               ],
               [
                 {role: '신부', name: '이지율', number: '010-4876-3918'},
-                {role: '아버지', name: '이동관', number: '010-4601-1075'},
-                {role: '어머니', name: '이경래', number: '010-4123-1737'}
+                {role: '신부 아버지', name: '이동관', number: '010-4601-1075'},
+                {role: '신부 어머니', name: '이경래', number: '010-4123-1737'}
               ]
             ]}
             setContactsVisible={setContactsVisible}
@@ -424,7 +424,7 @@ function App() {
               title="신랑"
               accounts={[
                 {role: '신랑', name: '유석모', org: '신한', number: '110-339-802812', kakaopay: 'https://qr.kakaopay.com/FQmpws7tU'},
-                {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806', kakaopay: ''},
+                {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806', kakaopay: 'https://qr.kakaopay.com/FLXR9ritj'},
                 {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114', kakaopay: ''}
               ]}
             />
