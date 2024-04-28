@@ -34,8 +34,8 @@ function App() {
   const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
-  const introImageUrl = `/assets/photos/008.jpg`;
-  const bridgeImageUrl = `/assets/photos/007.jpg`;
+  const introImageUrl = `${photoBaseUrl}/008.jpg`;
+  const bridgeImageUrl = `${photoBaseUrl}/007.jpg`;
 
   const photoRows = 2;
   const photoColumns = 15;
@@ -387,7 +387,6 @@ function App() {
                     {
                       [...new Array(photoColumns).keys()].map((col, index2) => {
                         const photoIndex = row + col * photoRows;
-                        // const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
                         const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
                         return <div className="item" key={index2}>
                           <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
@@ -465,8 +464,8 @@ function App() {
               title="신부"
               accounts={[
                 {role: '신부', name: '이지율', org: '우리', number: '1002-659-778030', kakaopay: 'https://qr.kakaopay.com/FDzxxLTmu'},
-                {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247', kakaopay: ''},
-                {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571', kakaopay: ''}
+                {role: '아버지', name: '이동관', org: '신한', number: '110-219-162247', kakaopay: 'https://qr.kakaopay.com/FKc9F4X7Z'},
+                {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571', kakaopay: 'https://qr.kakaopay.com/FcJnZ8Zka'}
               ]}
             />
           </div>
