@@ -98,6 +98,11 @@ function App() {
     window.onbeforeunload = () => {
       stop();
     };
+    document.onvisibilitychange = (_) => {
+      if (document.visibilityState !== "visible") {
+        stop();
+      }
+    };
     if (audioRef.current) {
       audioRef.current!.onpause = () => {
         setIsPlaying(false);
@@ -108,7 +113,7 @@ function App() {
       audioRef.current!.onplaying = () => {
         setIsPlaying(true);
       }
-    } 
+    }
   }
 
   function play() {
