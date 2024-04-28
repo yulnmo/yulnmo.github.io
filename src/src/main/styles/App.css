@@ -896,6 +896,7 @@ a, a:visited {
 
 .guest-book {
   margin: 0 0 6rem 0;
+  display: none;
 }
 
 .guest-book .contents .board {
