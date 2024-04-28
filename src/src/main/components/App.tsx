@@ -478,7 +478,7 @@ function App() {
               accounts={[
                 {role: '신랑', name: '유석모', org: '신한', number: '110-339-802812', kakaopay: 'https://qr.kakaopay.com/FQmpws7tU'},
                 {role: '아버지', name: '유승정', org: '농협', number: '173652-52-116806', kakaopay: 'https://qr.kakaopay.com/FLXR9ritj'},
-                {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114', kakaopay: ''}
+                {role: '어머니', name: '강미옥', org: '농협', number: '830-12-004114', kakaopay: 'https://qr.kakaopay.com/Ej8izb0FE'}
               ]}
             />
             <WithLove 
