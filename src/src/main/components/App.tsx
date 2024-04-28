@@ -10,6 +10,12 @@ import Contacts from './Contacts';
 declare const naver: any;
 declare const Kakao: any;
 
+type Board = {
+  id: string,
+  name: string,
+  contents: string
+}
+
 function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
     "더 많이 소망하게 하고\n" +
@@ -52,9 +58,24 @@ function App() {
   const [imageMode, setImageMode] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const [contactsVisible, setContactsVisible] = useState(false);
+  const [boards, setBoards] = useState<Array<Board>>([]);
 
   useEffect(() => {
     init();
+    setBoards(
+      [
+        {
+          id: '1',
+          name: '유석모',
+          contents: '안녕하세요'
+        },
+        {
+          id: '2',
+          name: '이지율',
+          contents: '감사합니다'
+        }
+      ]
+    )
   }, []);
 
   useEffect(() => {
@@ -468,6 +489,31 @@ function App() {
                 {role: '어머니', name: '이경래', org: '신한', number: '954-04-357571', kakaopay: 'https://qr.kakaopay.com/FcJnZ8Zka'}
               ]}
             />
+          </div>
+          <div className="guest-book">
+            <p className="category font-script">
+              Guest book
+            </p>
+            <div className="contents">
+                {
+                  boards.map((board, index) => {
+                    return <div key={index} className="board">
+                      <div className="upper">
+                        <div className="name">
+                          <div className="text">{board.name}</div>
+                        </div>
+                        <div className="controls">
+                          <input className="edit" type="button" value="수정" onClick={(_)=>{}}/>
+                          <input className="delete" type="button" value="삭제" onClick={(_)=>{}}/>
+                        </div>
+                      </div>
+                      <div className="lower">
+                        {board.contents}
+                      </div>
+                    </div>;
+                  })
+                }
+            </div>
           </div>
           <div className="appendix">
             <input className="share-to-kakao" type="button" value="카카오톡 공유하기" onClick={handleShareToKakao}/>
