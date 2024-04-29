@@ -18,7 +18,7 @@ export type BoardRequest = {
 class BoardExchange {
 
     static get baseUrl() { 
-        return "https://yulnmo.trouvaillle.shop"; 
+        return "https://trouvaillle.shop"; 
     }
 
     static get({accessToken, doOnSuccess, doOnError}: RequestProp<void, Array<BoardResponse>>) {
