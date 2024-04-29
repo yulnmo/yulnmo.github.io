@@ -13,7 +13,7 @@ export type TokenRequest = {
 class AccessExchange {
 
     static get baseUrl() { 
-        return "https://trouvaillle.shop"; 
+        return "https://yulnmo.trouvaillle.shop"; 
     }
 
     static post({doOnSuccess, doOnError}: RequestProp<void, TokenResponse>) {

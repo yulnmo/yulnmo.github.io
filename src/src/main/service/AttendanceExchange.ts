@@ -35,7 +35,7 @@ type AttendanceMeal = typeof AttendanceMeal[keyof typeof AttendanceMeal];
 class AttendanceExchange {
 
     static get baseUrl() { 
-        return "https://trouvaillle.shop"; 
+        return "https://yulnmo.trouvaillle.shop"; 
     }
 
     static get({accessToken, doOnSuccess, doOnError}: RequestProp<void, Array<AttendanceResponse>>) {
