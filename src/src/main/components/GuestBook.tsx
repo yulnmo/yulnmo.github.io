@@ -85,7 +85,18 @@ const GuestBook = () => {
     }
   }
 
+  function validate() {
+    return !(boardRequest.author.trim().length === 0 ||
+        boardRequest.password.length === 0 ||
+        boardRequest.contents.trim().length === 0);
+  }
+
   function handlePost() {
+    if (!validate()) {
+        alert('양식을 모두 채워주세요.');
+        return;
+    }
+
     AccessExchange.post(
         {
             requestBody: undefined,
@@ -177,7 +188,7 @@ const GuestBook = () => {
             이름
           </div>
           <div className="input">
-            <input type="text" className="textbox" value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value}))}} />
+            <input type="text" className="textbox" value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value.trim()}))}} />
           </div>
         </div>
         <div className="middle">
@@ -193,7 +204,7 @@ const GuestBook = () => {
             내용
           </div>
           <div className="input">
-            <textarea className="textbox" rows={5} value={boardRequest.contents} onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value}))}}/>
+            <textarea className="textbox" rows={5} value={boardRequest.contents} onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value.trim()}))}}/>
           </div>
         </div>
       </div>
