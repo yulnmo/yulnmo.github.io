@@ -93,14 +93,14 @@ body {
 }
 
 .main .header .abstract .mark {
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   letter-spacing: 0.2rem;
   color: #000000a0;
   margin: 0 0 0.5rem 0;
 }
 
 .main .header .abstract .who {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #000000a0;
 }
 
@@ -959,7 +959,6 @@ a, a:visited {
 }
 
 .guest-book .contents .board .lower {
-  display: flex;
   padding: 0.5rem 0 0 0;
   text-align: left;
   word-wrap: break-word;
@@ -973,6 +972,15 @@ a, a:visited {
 
 .guest-book .contents .board .lower::-webkit-scrollbar {
   display: none;
+}
+
+.guest-book .contents .board.form .lower {
+  display: flex;
+}
+
+.guest-book .contents .board .lower p {
+  padding: 0;
+  margin: 0;
 }
 
 .guest-book .contents .board .label {

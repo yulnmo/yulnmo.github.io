@@ -1,76 +1,141 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import BoardExchange, { BoardRequest, BoardResponse } from '../service/BoardExchange';
 import AccessExchange, { TokenResponse } from '../service/AccessExchange';
 
 const GuestBook = () => {
+  const initialBoardRequest = {
+    'author': '',
+    'contents': '',
+    'password': ''
+};
+
   const [boards, setBoards] = useState<Array<BoardResponse>>([]);
   const [boardVisibleCount, setBoardVisibleCount] = useState(0);
   const [accessTokenCache, setAccessTokenCache] = useState('');
-  const [boardRequest, setBoardRequest] = useState<BoardRequest>(
-    {
-        'author': '',
-        'contents': '',
-        'password': ''
-    }
-  )
+  const [boardRequest, setBoardRequest] = useState<BoardRequest>(initialBoardRequest);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const contentsRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     init();
   }, []);
 
   function init() {
+    getBoards();
+  }
+
+  function proceedWithAccessToken(callback: (_: string) => void) {
     AccessExchange.post(
         {
             requestBody: undefined,
             accessToken: '',
             doOnSuccess: (tokenResponse: TokenResponse) => {
-                setAccessTokenCache(tokenResponse.accessToken);
-                getBoards(1, tokenResponse.accessToken);
+                callback(tokenResponse.accessToken);
             },
-            doOnError: () => {
-
-            }
+            doOnError: () => {}
         }
     );
   }
 
-  function getBoards(retry: number = 1, accessToken: string = '') {
-    let token = '';
-    if (accessToken.length === 0) {
-        token = accessTokenCache;
-    } else {
-        token = accessToken;
+  function getBoards() {
+    proceedWithAccessToken(accessToken => 
+        {
+            BoardExchange.get({ 
+                requestBody: undefined,
+                accessToken: accessToken, 
+                doOnSuccess: (list: Array<BoardResponse>) => {
+                    setBoards(list);
+                    if (list.length > 5) {
+                        setBoardVisibleCount(5);
+                    } else {
+                        setBoardVisibleCount(list.length);
+                    }
+                },
+                doOnError: () => {
+                    
+                }
+            })
+        }
+    );
+  }
+
+  function handlePost() {
+    if (!validate()) {
+        alert('양식을 모두 채워주세요.');
+        return;
     }
 
-    BoardExchange.get({ 
-        requestBody: undefined,
-        accessToken: token, 
-        doOnSuccess: (list: Array<BoardResponse>) => {
-            setBoards(list);
-            if (list.length > 5) {
-                setBoardVisibleCount(5);
-            } else {
-                setBoardVisibleCount(list.length);
-            }
-        },
-        doOnError: () => {
-            if (retry > 0) {
-                AccessExchange.post(
-                    {
-                        requestBody: undefined,
-                        accessToken: '',
-                        doOnSuccess: (tokenResponse: TokenResponse) => {
-                            setAccessTokenCache(tokenResponse.accessToken);
-                            getBoards(retry - 1, tokenResponse.accessToken);
-                        },
-                        doOnError: () => {
-
-                        }
+    proceedWithAccessToken(accessToken =>
+        { 
+            BoardExchange.post(
+                {
+                    requestBody: {
+                        ...boardRequest,
+                        contents: boardRequest.contents.trim()
+                    },
+                    accessToken: accessToken,
+                    doOnSuccess: (response: BoardResponse) => {
+                        setBoards((prev) => {
+                            const newList = [...prev, response];
+                            if (newList.length > 5) {
+                                setBoardVisibleCount(5);
+                            } else {
+                                setBoardVisibleCount(newList.length);
+                            }
+                            return newList;
+                        });
+                        setBoardRequest(initialBoardRequest);
+                    },
+                    doOnError: () => {
+                        alert('일시적으로 이용이 불가합니다.\n잠시 후 시도해주세요.');
                     }
-                )
-            }
+                }
+            );
         }
-    })
+    );
+  }
+
+  function handleEdit(board: BoardResponse) {
+    
+  }
+
+  function handleDelete(board: BoardResponse) {
+    const requestBody = {
+        'id': board.boardId,
+        'password': prompt('비밀번호를 입력해주세요.') ?? '',
+        'author': '',
+        'contents': ''
+    };
+
+    if (requestBody.password.length === 0) {
+        return;
+    }
+    proceedWithAccessToken(accessToken =>
+        { 
+            BoardExchange.delete(
+                {
+                    requestBody: requestBody,
+                    accessToken: accessToken, 
+                    doOnSuccess: (_: void) => {
+                        setBoards((prev) => {
+                            const newList = prev.filter(it => it.boardId !== board.boardId);
+                            if (newList.length > 5) {
+                                setBoardVisibleCount(5);
+                            } else {
+                                setBoardVisibleCount(newList.length);
+                            }
+                            return newList;
+                        });
+                    },
+                    doOnError: () => {
+                        alert('비밀번호가 맞지 않습니다.');
+                    }
+                }
+            );
+        }
+    );
   }
 
   function handleExpand() {
@@ -91,120 +156,34 @@ const GuestBook = () => {
         boardRequest.contents.trim().length === 0);
   }
 
-  function handlePost() {
-    if (!validate()) {
-        alert('양식을 모두 채워주세요.');
-        return;
-    }
-
-    AccessExchange.post(
-        {
-            requestBody: undefined,
-            accessToken: '',
-            doOnSuccess: (tokenResponse: TokenResponse) => {
-                setAccessTokenCache(tokenResponse.accessToken);
-
-                BoardExchange.post(
-                    {
-                        requestBody: boardRequest,
-                        accessToken: tokenResponse.accessToken, 
-                        doOnSuccess: (response: BoardResponse) => {
-                            setBoards((prev) => {
-                                const newList = [...prev, response];
-                                if (newList.length > 5) {
-                                    setBoardVisibleCount(5);
-                                } else {
-                                    setBoardVisibleCount(newList.length);
-                                }
-                                return newList;
-                            });
-                        },
-                        doOnError: () => {}
-                    }
-                );
-            },
-            doOnError: () => {}
-        }
-    );
-  }
-
-  function handleEdit(board: BoardResponse) {
-    
-  }
-
-  function handleDelete(board: BoardResponse) {
-    const requestBody = {
-        'id': board.boardId,
-        'password': prompt('비밀번호를 입력해주세요.') ?? '',
-        'author': '',
-        'contents': ''
-    };
-
-    if (requestBody.password.length === 0) {
-        return;
-    }
-
-    AccessExchange.post(
-        {
-            requestBody: undefined,
-            accessToken: '',
-            doOnSuccess: (tokenResponse: TokenResponse) => {
-                setAccessTokenCache(tokenResponse.accessToken);
-
-                BoardExchange.delete(
-                    {
-                        requestBody: requestBody,
-                        accessToken: tokenResponse.accessToken, 
-                        doOnSuccess: (_: void) => {
-                            setBoards((prev) => {
-                                const newList = prev.filter(it => it.boardId !== board.boardId);
-                                if (newList.length > 5) {
-                                    setBoardVisibleCount(5);
-                                } else {
-                                    setBoardVisibleCount(newList.length);
-                                }
-                                return newList;
-                            });
-                        },
-                        doOnError: () => {
-                            alert('비밀번호가 맞지 않습니다.');
-                        }
-                    }
-                );
-            },
-            doOnError: () => {}
-        }
-    );
-  }
-
   return <div className="guest-book">
     <p className="category font-script">
       Guest book
     </p>
     <div className="contents">
-      <div className="board">
+      <div className="board form">
         <div className="upper">
-          <div className="label">
+          <div className="label" onClick={(_) => {nameRef.current?.focus();}}>
             이름
           </div>
           <div className="input">
-            <input type="text" className="textbox" value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value.trim()}))}} />
+            <input ref={nameRef} type="text" className="textbox" value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value.trim()}))}} />
           </div>
         </div>
         <div className="middle">
-          <div className="label">
+          <div className="label"onClick={(_) => {passwordRef.current?.focus();}}>
             비밀번호
           </div>
           <div className="input">
-            <input type="password" className="textbox" value={boardRequest.password} onChange={(e) => {setBoardRequest((prev) => ({...prev, password: e.target.value}))}} />
+            <input ref={passwordRef} type="password" className="textbox" value={boardRequest.password} onChange={(e) => {setBoardRequest((prev) => ({...prev, password: e.target.value}))}} />
           </div>
         </div>
         <div className="lower">
-          <div className="label">
+          <div className="label"onClick={(_) => {contentsRef.current?.focus();}}>
             내용
           </div>
           <div className="input">
-            <textarea className="textbox" rows={5} value={boardRequest.contents} onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value.trim()}))}}/>
+            <textarea ref={contentsRef} className="textbox" rows={5} value={boardRequest.contents} onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value}))}}/>
           </div>
         </div>
       </div>
@@ -230,7 +209,7 @@ const GuestBook = () => {
             </div>
           </div>
           <div className="lower">
-            {board.contents}
+            {board.contents.split("\n").map((it, index)=><p key={index}>{it}</p>)}
           </div>
         </div>;
         })
