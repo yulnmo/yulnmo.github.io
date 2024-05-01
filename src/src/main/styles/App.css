@@ -224,7 +224,7 @@ body {
   background: #E5E0DC;
   position: relative;
   transition: 0.5s;
-  border: 1px solid #00000010;
+  /* border: 1px solid #00000010; */
   z-index: 40;
 }
 
@@ -1046,7 +1046,7 @@ a, a:visited {
   background: #E5E0DC;
   position: relative;
   transition: 0.5s;
-  border: 1px solid #00000010;
+  /* border: 1px solid #00000010; */
   z-index: 40;
 }
 
