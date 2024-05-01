@@ -60,7 +60,7 @@ function App() {
 
   useEffect(() => {
     init();
-    // new Sakura('.intro');
+    new Sakura('.intro');
   }, []);
 
   useEffect(() => {
