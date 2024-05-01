@@ -126,7 +126,7 @@ body {
 .main .context .abstract .who {
   color: #000000ff;
   font-size: 2rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
 
   font-family: "Francisco", "Great Vibes", cursive;
   font-weight: 400;
@@ -135,11 +135,12 @@ body {
 
 .main .context .abstract .when, .context .main .abstract .where {
   color: #000000ff;
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 0.2rem 0;
 }
 
 .main .context .abstract .where {
+  font-size: 1.1rem;
   margin: 0 0 2rem 0;
 }
 
@@ -221,7 +222,7 @@ body {
 .contacts {
   margin: 0 2rem 6rem 2rem;
   border-radius: 0.5rem;
-  background: #E5E0DC;
+  background: #f1edea;
   position: relative;
   transition: 0.5s;
   /* border: 1px solid #00000010; */
@@ -229,7 +230,7 @@ body {
 }
 
 .contacts.visible, .attendance.visible .area {
-  background: #E5E0DC;
+  background: #f1edea;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   transition: 0.5s;
@@ -769,7 +770,7 @@ a, a:visited {
 
 .with-love {
   border-radius: 0.5rem;
-  background: #E5E0DC;
+  background: #f1edea;
   margin: 0 0 1rem 0;
   position: relative;
   font-size: 1rem;
@@ -1043,7 +1044,7 @@ a, a:visited {
 .attendance .area {
   margin: 0 2rem 0 2rem;
   border-radius: 0.5rem;
-  background: #E5E0DC;
+  background: #f1edea;
   position: relative;
   transition: 0.5s;
   /* border: 1px solid #00000010; */
