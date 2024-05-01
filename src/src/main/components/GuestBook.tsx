@@ -7,7 +7,7 @@ const GuestBook = () => {
     'author': '',
     'contents': '',
     'password': ''
-};
+  };
 
   const [boards, setBoards] = useState<Array<BoardResponse>>([]);
   const [boardVisibleCount, setBoardVisibleCount] = useState(0);
@@ -160,6 +160,9 @@ const GuestBook = () => {
     <p className="category font-script">
       Guest book
     </p>
+    <p className="guide">
+      석모 ♥︎ 지율에게 축하하는 글을 남겨주세요.
+    </p>
     <div className="contents">
       <div className="board form">
         <div className="upper">
@@ -167,7 +170,7 @@ const GuestBook = () => {
             이름
           </div>
           <div className="input">
-            <input ref={nameRef} type="text" className="textbox" value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value.trim()}))}} />
+            <input ref={nameRef} type="text" className="textbox" placeholder='이름을 입력해주세요.' value={boardRequest.author} onChange={(e) => {setBoardRequest((prev) => ({...prev, author: e.target.value.trim()}))}} />
           </div>
         </div>
         <div className="middle">
@@ -175,7 +178,7 @@ const GuestBook = () => {
             비밀번호
           </div>
           <div className="input">
-            <input ref={passwordRef} type="password" className="textbox" value={boardRequest.password} onChange={(e) => {setBoardRequest((prev) => ({...prev, password: e.target.value}))}} />
+            <input ref={passwordRef} type="password" className="textbox" placeholder='비밀번호를 입력해주세요.' value={boardRequest.password} onChange={(e) => {setBoardRequest((prev) => ({...prev, password: e.target.value}))}} />
           </div>
         </div>
         <div className="lower">
@@ -183,7 +186,7 @@ const GuestBook = () => {
             내용
           </div>
           <div className="input">
-            <textarea ref={contentsRef} className="textbox" rows={5} value={boardRequest.contents} onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value}))}}/>
+            <textarea ref={contentsRef} className="textbox" rows={5} value={boardRequest.contents} placeholder='내용을 입력해주세요.' onChange={(e) => {setBoardRequest((prev) => ({...prev, contents: e.target.value}))}}/>
           </div>
         </div>
       </div>

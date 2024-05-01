@@ -18,11 +18,13 @@ body {
 }
 
 #root {
+  /*
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  */
 
   display: flex;
   justify-content: center;
@@ -95,13 +97,13 @@ body {
 .main .header .abstract .mark {
   font-size: 0.5rem;
   letter-spacing: 0.2rem;
-  color: #000000a0;
+  color: #000000ff;
   margin: 0 0 0.5rem 0;
 }
 
 .main .header .abstract .who {
   font-size: 1.2rem;
-  color: #000000a0;
+  color: #000000ff;
 }
 
 .main .header .abstract .who .line {
@@ -111,7 +113,7 @@ body {
 }
 
 .main .header .abstract .who .line .stroke {
-  width: 0.01rem;
+  width: 1px;
   height: 100%;
   background: #00000070;
 }
@@ -200,7 +202,7 @@ body {
 .parents {
   display: flex;
   justify-content: center;
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
   font-size: 1.05rem;
 }
 
@@ -226,7 +228,7 @@ body {
   z-index: 40;
 }
 
-.contacts.visible {
+.contacts.visible, .attendance.visible .area {
   background: #F7F4F3;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -237,7 +239,7 @@ body {
   margin: 0;
 }
 
-.contacts .title {
+.contacts .title, .attendance .area {
   padding: 1rem 0;
   font-size: 0.875em;
   letter-spacing: 0.05rem;
@@ -884,6 +886,10 @@ a, a:visited {
   transition: 0.5s;
 }
 
+.contacts .arrows .arrow.rotate {
+  top: 1.5rem;
+}
+
 .main .main-overlay {
   display: none;
   position: absolute;
@@ -897,7 +903,7 @@ a, a:visited {
 }
 
 .main .main-overlay.visible {
-  display: block;
+  /* display: block; */
 }
 
 .guest-book {
@@ -905,7 +911,12 @@ a, a:visited {
   font-size: 0.875rem;
 }
 
-.guest-book .contents .board {
+.guest-book .guide {
+  font-size: 1rem;
+  margin: 0 0 2rem 0;
+}
+
+.guest-book .contents .board, .attendance .form {
   display: flex;
   flex-direction: column;
 
@@ -951,7 +962,7 @@ a, a:visited {
   cursor: pointer;
 }
 
-.guest-book .contents .board .middle {
+.guest-book .contents .board .middle, .attendance .form .row {
   display: flex;
   padding: 0.5rem 0 0.5rem 0;
   border-bottom: 1px dashed #00000010;
@@ -994,7 +1005,7 @@ a, a:visited {
   text-align: left;
 }
 
-.guest-book .contents .board .input .textbox {
+.guest-book .contents .board .input .textbox, .attendance .form .textbox {
   width: 100%;
   outline: none;
   border: none;
@@ -1008,3 +1019,172 @@ a, a:visited {
 .guest-book .contents .manipulate {
   margin: 0.5rem 0 3rem 0;
 }
+
+.attendance {
+  margin: 0 0 6rem 0;
+}
+
+.attendance .guide {
+  margin: 0 0 3rem 0;
+}
+
+.attendance .guide p {
+  line-height: 1rem;
+}
+
+.attendance .area {
+  margin: 0 2rem 0 2rem;
+  border-radius: 0.5rem;
+  background: #fcfcfc;
+  position: relative;
+  transition: 0.5s;
+  border: 1px solid #00000010;
+  z-index: 40;
+}
+
+.attendance.visible .area {
+  font-size: 1rem;
+}
+
+.attendance .area.success {
+  transition: 0.5s;
+  background: #759F75;
+  border: 1px solid #ffffff10;
+  color: white;
+}
+
+.attendance .area i {
+  display: inline-block;
+  font-size: 0.7em;
+  color: #000000a0;
+  margin: 0 0.8em 0 0;
+}
+
+.attendance .area.success i {
+  color: white;
+}
+
+.attendance .area.success .arrows .arrow {
+  stroke: white;
+}
+
+.attendance .form {
+  margin: 0 2rem;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  padding: 0;
+  border: none;
+}
+
+.attendance.visible .form {
+  margin: 0;
+  height: auto;
+  padding: 1rem 1rem;
+  transition: 0.5s;
+}
+
+.attendance .form .row {
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: 0.5s;
+}
+
+.attendance.visible .form .row {
+  height: auto;
+  padding: 0.5rem 0 0.5rem 0;
+  transition: 0.5s;
+}
+
+.attendance .form .row.end {
+  border: none;
+}
+
+.attendance .form .label {
+  flex: 2 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.attendance .form .input {
+  display: flex;
+  flex: 5 1;
+  text-align: left;
+}
+
+.attendance .form .input .textbox {
+  margin: 0 0.3rem;
+}
+
+.attendance .form .role, .attendance .form .meal {
+  flex: 1 1;
+  text-align: center;
+  background: #e8e8e8;
+  margin: 0 0.3rem;
+  padding: 0.3rem 0;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.attendance .form .role.selected, .attendance .form .meal.selected {
+  background: white;
+  border: 1px solid #000000;
+}
+
+.attendance .form .manipulate {
+  justify-content: center;
+  margin: 1rem 0  0;
+}
+
+.attendance .arrows .arrow.rotate {
+  top: 1.3rem;
+}
+
+.attendance .form .manipulate input[type="button"] {
+  font-size: 1rem;
+  color: black;
+  padding: 0.6rem 2.8rem;
+}
+
+.toast-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 200;
+
+  display: flex;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.toast {
+  position: absolute;
+  bottom: 3rem;
+  width: 80%;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem;
+
+  background: white;
+  color: black;
+
+  display: flex;
+  justify-content: center;
+
+  pointer-events: all;
+}
+
+.toast.success {
+  background: #A5D5A9e0;
+  color: white;
+}
+
+.toast.info {
+  background: #e8e8e830;
+}
+

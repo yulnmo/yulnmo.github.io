@@ -7,6 +7,8 @@ import Map from './Map';
 import WithLove from './WithLove';
 import Contacts from './Contacts';
 import GuestBook from './GuestBook';
+import Attendance from './Attendance';
+import Toast, { ToastLevel } from './Toast';
 
 declare const naver: any;
 declare const Kakao: any;
@@ -66,6 +68,19 @@ function App() {
       body.classList.remove('no-scroll');
     }
   }, [imageMode]);
+
+  /*
+  useEffect(() => {
+    const root = document.querySelector('#root') as HTMLElement;
+    const contacts = document.querySelector('.contacts') as HTMLElement;
+    if (root && contacts && contactsVisible) {
+      root!.classList.add('no-scroll');
+      scrollToContactsCenter();
+    } else {
+      root?.classList.remove('no-scroll');
+    }
+  }, [contactsVisible]);
+  */
 
   function init() {
     initAudio();
@@ -197,17 +212,6 @@ function App() {
     return holidays.includes(target);
   }
 
-  useEffect(() => {
-    const root = document.querySelector('#root') as HTMLElement;
-    const contacts = document.querySelector('.contacts') as HTMLElement;
-    if (root && contacts && contactsVisible) {
-      root!.classList.add('no-scroll');
-      scrollToContactsCenter();
-    } else {
-      root?.classList.remove('no-scroll');
-    }
-  }, [contactsVisible]);
-
   function scrollToContactsCenter() {
     const root = document.querySelector('#root') as HTMLElement;
     const contacts = document.querySelector('.contacts') as HTMLElement;
@@ -231,6 +235,11 @@ function App() {
         photos={photos}
         photoBaseUrl={photoBaseUrl}
         imageIndex={imageIndex}
+      />
+      <Toast 
+        text=""
+        visible={false}
+        level={ToastLevel.success}
       />
       <div className="main" >
         <div className="audio-controller" onClick={handleTogglePlay} >
@@ -447,6 +456,7 @@ function App() {
               </div>;
             })}
           </div>
+          <Attendance />
           <div className="with-loves">
             <p className="category">
               마음 전하실 곳

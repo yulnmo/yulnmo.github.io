@@ -10,27 +10,27 @@ export type AttendanceResponse = {
 
 export type AttendanceRequest = {
     id?: string,
-    role: AttendanceRole,
+    role: string,
     name: string,
     number: number,
-    meal: AttendanceMeal,
+    meal: string,
     password: string
 };
 
-const AttendanceRole = {
+export const AttendanceRole = {
     GROOM: 'GROOM',
     BRIDE: 'BRIDE'
 } as const;
 
-type AttendanceRole = typeof AttendanceRole[keyof typeof AttendanceRole]; 
+export type AttendanceRole = typeof AttendanceRole[keyof typeof AttendanceRole]; 
 
-const AttendanceMeal = {
+export const AttendanceMeal = {
     HAVE: 'HAVE',
     SKIP: 'SKIP',
     UNDECIDED: 'UNDECIDED'
 } as const;
 
-type AttendanceMeal = typeof AttendanceMeal[keyof typeof AttendanceMeal]; 
+export type AttendanceMeal = typeof AttendanceMeal[keyof typeof AttendanceMeal]; 
 
 class AttendanceExchange {
 
