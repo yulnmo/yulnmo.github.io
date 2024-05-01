@@ -12,6 +12,7 @@ import Toast, { ToastLevel } from './Toast';
 
 declare const naver: any;
 declare const Kakao: any;
+declare const Sakura: any;
 
 function App() {
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
@@ -38,8 +39,8 @@ function App() {
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/013.jpg`;
-  const bridgeImageUrl = `${photoBaseUrl}/007.jpg`;
-  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/008.jpg`;
+  const bridgeImageUrl = `${photoBaseUrl}/030.jpg`;
+  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/007.jpg`;
 
   const photoRows = 2;
   const photoColumns = 15;
@@ -59,6 +60,7 @@ function App() {
 
   useEffect(() => {
     init();
+    // new Sakura('.intro');
   }, []);
 
   useEffect(() => {

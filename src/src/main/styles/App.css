@@ -69,7 +69,7 @@ body {
   top: 0;
   bottom: 0;
 
-  /* background: linear-gradient(0deg, white 0%, #ffffff80 5%, transparent 10%); */
+  background: linear-gradient(0deg, white 0%, #ffffff80 5%, transparent 10%);
 }
 
 .main .border {
@@ -82,7 +82,7 @@ body {
 }
 
 .main .context .abstract {
-  margin: 3rem 0 6rem 0;
+  margin: 2rem 0 6rem 0;
 }
 
 .main .header .abstract {
