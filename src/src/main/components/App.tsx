@@ -39,7 +39,7 @@ function App() {
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/008.jpg`;
   const bridgeImageUrl = `${photoBaseUrl}/007.jpg`;
-  const kakaoThumbnailImageUrl = `${photoBaseUrl}/008.jpg`;
+  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/017.jpg`;
 
   const photoRows = 2;
   const photoColumns = 15;
