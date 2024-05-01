@@ -39,6 +39,7 @@ function App() {
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/008.jpg`;
   const bridgeImageUrl = `${photoBaseUrl}/007.jpg`;
+  const kakaoThumbnailImageUrl = `${photoBaseUrl}/017.jpg`;
 
   const photoRows = 2;
   const photoColumns = 15;
@@ -177,7 +178,7 @@ function App() {
       content: {
         title: '유석모 ♥︎ 이지율 결혼합니다',
         description: '6월 22일 / 충무로 라비두스 👰🏻‍♀️💍🤵🏻',
-        imageUrl: introImageUrl,
+        imageUrl: kakaoThumbnailImageUrl,
         link: {
           mobileWebUrl: baseUrl,
           webUrl: baseUrl,
