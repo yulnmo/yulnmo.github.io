@@ -53,7 +53,7 @@ function App() {
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/015.jpg`;
-  const bridgeImageUrl = `${photoBaseUrl}/029.jpg`;
+  const bridgeImageUrl = `${photoBaseUrl}/028.jpg`;
   const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/006.jpg`;
   const shareUrl = baseUrl + (searchParams.get('type')?.toLowerCase() === 'b' ? '/?type=b' : '');
 
