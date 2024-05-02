@@ -38,9 +38,9 @@ function App() {
   const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
-  const introImageUrl = `${photoBaseUrl}/013.jpg`;
-  const bridgeImageUrl = `${photoBaseUrl}/030.jpg`;
-  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/007.jpg`;
+  const introImageUrl = `${photoBaseUrl}/015.jpg`;
+  const bridgeImageUrl = `${photoBaseUrl}/029.jpg`;
+  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/006.jpg`;
 
   const photoRows = 2;
   const photoColumns = 15;
