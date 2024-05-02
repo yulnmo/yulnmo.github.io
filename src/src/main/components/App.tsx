@@ -15,6 +15,8 @@ declare const Kakao: any;
 declare const Sakura: any;
 
 function App() {
+  const searchParams = new URLSearchParams(window.location.search);
+
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
     "더 많이 소망하게 하고\n" +
     "가슴에 열정을, 마음에 평화를 주지.\n" +
@@ -22,16 +24,28 @@ function App() {
     "너에게 영원히 주고 싶어.";
   const quoteReference = "영화 《노트북》 中";
 
-  const invitationText = "소중하고 따뜻한 두 사람이 만나​\n" +
+  const invitationText = (searchParams.get('type')?.toLowerCase() !== 'b' ?
+    "소중하고 따뜻한 두 사람이 만나​\n" +
     "함께하는 일곱 번째 푸르른 여름날\n" +
     "연인에서 부부로 새로운 시작을 합니다.\n \n" +
     "귀한 발걸음 하시어 축복해 주시면\n" +
-    "더 없는 격려와 기쁨으로 간직하겠습니다.";
+    "더 없는 격려와 기쁨으로 간직하겠습니다." :
+    "항상 귀댁의 평안과 행복을 기원드립니다\n" +
+    "누부시게 푸르른 여름날 저희 아들이 결혼을 합니다\n" +
+    "예쁘게 키워온 사랑으로 아름다운 가정을 이루는\n" +
+    "뜻깊은 자리에 소중한 분들을 모시고자 합니다\n" +
+    "\n" +
+    "귀한 발걸음으로 따뜻한 축복의 박수를 보내주시면\n" +
+    "더 없는 격려와 기쁨으로 간직하겠습니다\n" +
+    "\n" +
+    "신랑 석모군 부모 유승정·강미옥 拜上"
+  );
   const invitationReference = "석모 • 지율 올림";
 
   const informations = [
     ["지하철 이용 시", ["3, 4호선 충무로역", "도보: 1번 출구에서 약 10분", "셔틀버스: 1번 출구 앞 (3분 간격 운행)\n오전 10시 30분부터 오전 11시 30분까지 운행"]],
-    ["주차 안내", ["라비두스 주차장(3시간 무료)"]]
+    ["주차 안내", ["라비두스 주차장(3시간 무료)"]],
+    ...(searchParams.get('type')?.toLowerCase() === 'b' ? [["전세 버스", ["오전 8시 대전 엑스포 남문광장"]]] : [])
   ];
 
   const baseUrl = 'https://yulnmo.github.io';
@@ -41,6 +55,7 @@ function App() {
   const introImageUrl = `${photoBaseUrl}/015.jpg`;
   const bridgeImageUrl = `${photoBaseUrl}/029.jpg`;
   const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/006.jpg`;
+  const shareUrl = baseUrl + (searchParams.get('type')?.toLowerCase() === 'b' ? '/?type=b' : '');
 
   const photoRows = 2;
   const photoColumns = 15;
@@ -182,16 +197,16 @@ function App() {
         description: '6월 22일 / 충무로 라비두스 👰🏻‍♀️💍🤵🏻',
         imageUrl: kakaoThumbnailImageUrl,
         link: {
-          mobileWebUrl: baseUrl,
-          webUrl: baseUrl,
+          mobileWebUrl: shareUrl,
+          webUrl: shareUrl,
         },
       },
       buttons: [
         {
           title: '모바일 청첩장 열기',
           link: {
-            mobileWebUrl: baseUrl,
-            webUrl: baseUrl,
+            mobileWebUrl: shareUrl,
+            webUrl: shareUrl,
           },
         }
       ]
@@ -199,7 +214,7 @@ function App() {
   }
 
   function handleCopyUrl(e: MouseEvent<HTMLDivElement>) {
-    MyClipboard.copy(baseUrl);
+    MyClipboard.copy(shareUrl);
   }
 
   function handleImageClick(photoIndex: number) {
