@@ -125,7 +125,7 @@ body {
 
 .main .context .abstract .who {
   color: #000000ff;
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin: 0 0 0.5rem 0;
 
   font-family: "Francisco", "Great Vibes", cursive;
@@ -965,10 +965,12 @@ a, a:visited {
   display: none;
   margin: 0 0.5rem 0 0;
   cursor: pointer;
+  color: #606060;
 }
 
 .guest-book .contents .board .upper .controls .delete {
   cursor: pointer;
+  color: #606060;
 }
 
 .guest-book .contents .board .middle, .attendance .form .row {
@@ -982,7 +984,8 @@ a, a:visited {
   padding: 0.5rem 0 0 0;
   text-align: left;
   word-wrap: break-word;
-  max-height: 5rem;
+  min-height: 1rem;
+  max-height: 6rem;
   overflow-x: hidden;
   overflow-y: scroll;
 

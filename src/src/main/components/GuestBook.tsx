@@ -197,7 +197,7 @@ const GuestBook = () => {
       <div className="contents">
       {
         [...new Array(boardVisibleCount).keys()].map((_, index) => {
-        const board = boards[index];
+        const board = boards[boards.length - 1 - index];
         if (!board) {
           return <div key={index} style={{display: "none"}}></div>;
         }
