@@ -38,7 +38,7 @@ const Map = ({assetsBaseUrl}: MapProps) => {
       </div>
       <div id="map" className="map" style={!isMapApi ? {'display': 'none'} : {}} />
       <div className="map-simple" style={isMapApi ? {'display': 'none'} : {}} >
-        <img src={`${assetsBaseUrl}/map.jpg`} />
+        <img src={`${assetsBaseUrl}/map.png`} />
       </div>
       <div className="links">
         <div className="link" style={{'flex': '3 0'}} data-name="navermap" onClick={handleClickLink}>
