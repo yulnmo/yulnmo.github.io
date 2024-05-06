@@ -52,7 +52,7 @@ function App() {
 
   const baseUrl = 'https://yulnmo.github.io';
   const photos = [...new Array(34).keys()].map(it => (it + 1).toString().padStart(3, "0")).filter(it => !["006", "011"].includes(it));
-  const photosContinuable = ["031"];
+  const photosContinuable: Array<string> = [];
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/018.jpg`;
