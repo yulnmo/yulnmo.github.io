@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.0e17dbb6.css",
+    "main.css": "/static/css/main.d1c6e403.css",
     "main.js": "/static/js/main.30aab65d.js",
     "static/js/206.b9f723f5.chunk.js": "/static/js/206.b9f723f5.chunk.js",
     "static/media/uicons-solid-rounded-LOZ5Y5MG.eot": "/static/media/uicons-solid-rounded-LOZ5Y5MG.fe5c180c952cd82572a6.eot",
@@ -12,7 +12,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.0e17dbb6.css",
+    "static/css/main.d1c6e403.css",
     "static/js/main.30aab65d.js"
   ]
 }
