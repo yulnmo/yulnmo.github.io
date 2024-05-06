@@ -51,7 +51,8 @@ function App() {
   ];
 
   const baseUrl = 'https://yulnmo.github.io';
-  const photos = [...new Array(34).keys()].map(it => (it + 1).toString().padStart(3, "0"));
+  const photos = [...new Array(34).keys()].map(it => (it + 1).toString().padStart(3, "0")).filter(it => !["006", "011"].includes(it));
+  const photosContinuable = ["031"];
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
   const introImageUrl = `${photoBaseUrl}/018.jpg`;
@@ -60,7 +61,7 @@ function App() {
   const shareUrl = baseUrl + (searchParams.get('type')?.toLowerCase() === 'b' ? '/?type=b' : '');
 
   const photoRows = 2;
-  const photoColumns = 17;
+  const photoColumns = 16;
   const targetDate = new Date(2024, 6 - 1, 22);
   const days = (() => {
     const nextMonth = new Date(targetDate.getTime());
@@ -421,11 +422,35 @@ function App() {
                   return <div className="photo-row" key={index}>
                     {
                       [...new Array(photoColumns).keys()].map((col, index2) => {
-                        const photoIndex = row + col * photoRows;
-                        const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
-                        return <div className="item" key={index2}>
-                          <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
-                        </div>;
+                        let photoIndex = row + col * photoRows;
+                        let extraIndex = 0;
+                        if (photoIndex > 0) {
+                          extraIndex = [...new Array(photoIndex).keys()]
+                            .map(it => photosContinuable.includes(photos[it]) ? Number(1) : Number(0))
+                            .reduce((acc, s) => acc + s);
+                          photoIndex = photoIndex + extraIndex;
+                        }
+
+                        console.log(photoIndex, extraIndex);
+                        if (photoIndex < photos.length) {
+                          const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
+                          let nextPhotoUrl = '';
+                          if (photoIndex + 1 < photos.length && photosContinuable.includes(photos[photoIndex])) {
+                            nextPhotoUrl = `${photoBaseUrl}/${photos[photoIndex + 1]}.jpg`;
+                          }
+                          return <div className="item" key={index2}>
+                            {
+                              nextPhotoUrl.length !== 0 ?
+                              <>
+                                <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
+                                <img src={nextPhotoUrl} onClick={(_) => handleImageClick(photoIndex + 1)}/>
+                              </> :
+                              <img src={photoUrl} onClick={(_) => handleImageClick(photoIndex)}/>
+                            }
+                          </div>;
+                        } else {
+                          return <div className="item" key={index2}></div>;
+                        }
                       })
                     }
                   </div>; 
