@@ -49,16 +49,16 @@ function App() {
   ];
 
   const baseUrl = 'https://yulnmo.github.io';
-  const photos = [...new Array(30).keys()].map(it => (it + 1).toString().padStart(3, "0"));
+  const photos = [...new Array(34).keys()].map(it => (it + 1).toString().padStart(3, "0"));
   const assetsBaseUrl = "/assets";
   const photoBaseUrl = `${assetsBaseUrl}/photos`;
-  const introImageUrl = `${photoBaseUrl}/015.jpg`;
-  const bridgeImageUrl = `${photoBaseUrl}/028.jpg`;
-  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/006.jpg`;
+  const introImageUrl = `${photoBaseUrl}/018.jpg`;
+  const bridgeImageUrl = `${photoBaseUrl}/031.jpg`;
+  const kakaoThumbnailImageUrl = `${baseUrl}${photoBaseUrl}/007.jpg`;
   const shareUrl = baseUrl + (searchParams.get('type')?.toLowerCase() === 'b' ? '/?type=b' : '');
 
   const photoRows = 2;
-  const photoColumns = 15;
+  const photoColumns = 17;
   const targetDate = new Date(2024, 6 - 1, 22);
   const days = (() => {
     const nextMonth = new Date(targetDate.getTime());
