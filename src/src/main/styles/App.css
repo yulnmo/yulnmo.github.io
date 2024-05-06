@@ -484,6 +484,17 @@ body {
   line-height: 1rem;
 }
 
+.address .contents i {
+  color: #00000040;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.address .contents i:hover {
+  color: #00000080;
+}
+
 .location .category {
   margin: 3rem 0 3rem 0;
 }

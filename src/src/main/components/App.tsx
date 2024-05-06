@@ -464,10 +464,10 @@ function App() {
           </div>
           <div className="address">
             <p className="contents">
-              <span>서울특별시 중구 필동로 5길 7</span>
+              <span>서울특별시 중구 필동로 5길 7</span><i className="fi fi-sr-copy-alt" onClick={(_) => MyClipboard.copy('서울특별시 중구 필동로 5길 7')}></i>
             </p>
             <p className="contents">
-              <span>(서울특별시 중구 필동3가 62-11번지)</span>
+              <span>(서울특별시 중구 필동3가 62-11번지)</span><i className="fi fi-sr-copy-alt"onClick={(_) => MyClipboard.copy('서울특별시 중구 필동3가 62-11번지')}></i>
             </p>
             
             <p className="contents">
