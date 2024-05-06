@@ -182,7 +182,7 @@ body {
 }
 
 .invitation {
-  margin: 0 0 6rem 0;
+  margin: 0 -2rem 6rem -2rem;
 }
 
 .invitation .reference {

@@ -45,7 +45,7 @@ function App() {
   const informations = [
     ["지하철 이용 시", ["3, 4호선 충무로역", "도보: 1번 출구에서 약 10분", "셔틀버스: 1번 출구 앞 (3분 간격 운행)\n오전 10시 30분부터 오전 11시 30분까지 운행"]],
     ["주차 안내", ["라비두스 주차장(3시간 무료)"]],
-    ...(searchParams.get('type')?.toLowerCase() === 'b' ? [["전세 버스", ["오전 8시 대전 엑스포 남문광장"]]] : [])
+    ...(searchParams.get('type')?.toLowerCase() === 'b' ? [["전세 버스", ["오전 7시 20분 금남 대평시장 공영주차장", "오전 8시 대전 엑스포 남문광장"]]] : [])
   ];
 
   const baseUrl = 'https://yulnmo.github.io';
