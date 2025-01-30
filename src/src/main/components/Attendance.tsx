@@ -1,6 +1,6 @@
-import React, { useState, MouseEvent, useRef } from 'react';
-import AttendanceExchange, { AttendanceMeal, AttendanceRequest, AttendanceResponse, AttendanceRole } from '../service/AttendanceExchange';
+import React, { MouseEvent, useRef, useState } from 'react';
 import AccessExchange, { TokenResponse } from '../service/AccessExchange';
+import AttendanceExchange, { AttendanceMeal, AttendanceResponse, AttendanceRole } from '../service/AttendanceExchange';
 
 type AttendanceRequestForm = {
     role: string,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DefaultApiResponse, RequestProp } from "./AbstractExchange";
+import { mockAxios } from "../utils/MockUtil";
 
 
 export type AttendanceResponse = {
@@ -31,6 +32,8 @@ export const AttendanceMeal = {
 } as const;
 
 export type AttendanceMeal = typeof AttendanceMeal[keyof typeof AttendanceMeal]; 
+
+mockAxios();
 
 class AttendanceExchange {
 

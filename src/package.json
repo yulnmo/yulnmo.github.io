@@ -8,6 +8,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "axios-mock-adapter": "^2.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
@@ -17,8 +19,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build && ./copy.sh",
+    "start": "cross-env REACT_APP_ENV=development react-scripts start",
+    "start:mock": "cross-env REACT_APP_ENV=mock react-scripts start",
+    "build": "cross-env REACT_APP_ENV=production GENERATE_SOURCEMAP=false react-scripts build && ./copy.sh",
+    "build:mock": "cross-env REACT_APP_ENV=mock GENERATE_SOURCEMAP=false react-scripts build && ./copy.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

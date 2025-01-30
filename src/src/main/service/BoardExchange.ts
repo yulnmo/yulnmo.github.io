@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DefaultApiResponse, RequestProp } from "./AbstractExchange";
+import { mockAxios } from "../utils/MockUtil";
 
 
 export type BoardResponse = {
@@ -14,6 +15,8 @@ export type BoardRequest = {
     password: string,
     id?: string
 };
+
+mockAxios();
 
 class BoardExchange {
 

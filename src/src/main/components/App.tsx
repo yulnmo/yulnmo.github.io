@@ -1,20 +1,21 @@
-import React, { useEffect, useRef, useState, MouseEvent, KeyboardEvent } from 'react';
-import '../styles/App.css';
-import MyClipboard from '../service/MyClipboard';
+import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import 'react-slideshow-image/dist/styles.css';
-import ImageViewer from './ImageViewer';
-import Map from './Map';
-import WithLove from './WithLove';
+import MyClipboard from '../service/MyClipboard';
+import '../styles/App.css';
+import Attendance from './Attendance';
 import Contacts from './Contacts';
 import GuestBook from './GuestBook';
-import Attendance from './Attendance';
+import ImageViewer from './ImageViewer';
+import Map from './Map';
 import Toast, { ToastLevel } from './Toast';
+import WithLove from './WithLove';
 
 declare const naver: any;
 declare const Kakao: any;
 declare const Sakura: any;
 
 function App() {
+
   const searchParams = new URLSearchParams(window.location.search);
 
   const quoteText = "최고의 사랑은 영혼을 일깨우고\n" +
@@ -107,10 +108,15 @@ function App() {
   */
 
   function init() {
+    logEnv();
     initAudio();
     play();
     map();
     kakao();
+  }
+
+  function logEnv() {
+    console.log(`%cenv %c${process.env.REACT_APP_ENV}`, "color: skyblue;", "color: inherit;");
   }
 
   function initAudio() {
@@ -434,7 +440,6 @@ function App() {
                           photoIndex = photoIndex + extraIndex;
                         }
 
-                        console.log(photoIndex, extraIndex);
                         if (photoIndex < photos.length) {
                           const photoUrl = `${photoBaseUrl}/${photos[photoIndex]}.jpg`;
                           let nextPhotoUrl = '';

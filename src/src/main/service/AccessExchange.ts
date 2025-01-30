@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DefaultApiResponse, RequestProp } from "./AbstractExchange";
+import { mockAxios } from "../utils/MockUtil";
 
 export type TokenResponse = {
     accessToken: string,
@@ -9,6 +10,8 @@ export type TokenResponse = {
 export type TokenRequest = {
     key: string
 };
+
+mockAxios();
 
 class AccessExchange {
 
